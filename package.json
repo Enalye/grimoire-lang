@@ -1,0 +1,26 @@
+{
+    "name": "grimoire-lang",
+    "displayName": "Grimoire Language",
+    "description": "Language support for the Grimoire language",
+    "version": "0.0.1",
+    "publisher": "Enalye",
+    "engines": {
+        "vscode": "^1.25.0"
+    },
+    "categories": [
+        "Programming Languages"
+    ],
+    "contributes": {
+        "languages": [{
+            "id": "grimoire",
+            "aliases": ["Grimoire", "grimoire"],
+            "extensions": [".grimoire",".gs",".g",".gr",".grm"],
+            "configuration": "./language-configuration.json"
+        }],
+        "grammars": [{
+            "language": "grimoire",
+            "scopeName": "source.grimoire",
+            "path": "./syntaxes/grimoire.tmLanguage.json"
+        }]
+    }
+}

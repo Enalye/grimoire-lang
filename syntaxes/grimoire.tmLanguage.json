@@ -1,0 +1,149 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "Grimoire",
+	"patterns": [
+        {
+            "include": "#supports"
+        },
+		{
+			"include": "#keywords"
+		},
+		{
+			"include": "#strings"
+        },
+        {
+			"include": "#constants"
+        },
+        {
+            "include": "#comments"
+        }
+	],
+	"repository": {
+		"keywords": {
+			"patterns": [
+                {
+                    "name": "keyword.control.grimoire",
+                    "match": "\\b(main|if|else|while|do|loop|for|return|yield|break|continue)\\b"
+                },
+                {
+                    "name": "keyword.control.import.grimoire",
+                    "match": "\\b(import)\\b"
+                },
+                {
+                    "name": "keyword.operator.word.grimoire",
+                    "match": "\\b(and|or|not|xor|as|is)\\b"
+                },
+                {
+                    "name": "keyword.operator.assignement.grimoire",
+                    "match": "\\b(\\+=|-=|\\*=|\/=|%=|=)\\b"
+                },
+                {
+                    "name": "keyword.operator.logical.grimoire",
+                    "match": "\\b(==|!=|\\>=|\\<=|\\>|\\<)\\b"
+                },
+                {
+                    "name": "keyword.operator.arithmetic.grimoire",
+                    "match": "\\b(\\+\\+|\\+|--|-|\\*|\/|%)\\b"
+                },
+                {
+                    "match": "(\\b(func)\\b( *))([A-Za-z]([A-Za-z0-9_]*)( *)\\b(\\+|-|\\*|\/|%|and|or|not|xor|==|!=|\\>=|\\<=|\\>|\\<)( *))\\(",
+                    "captures": {
+                        "1": {
+                            "name": "keyword.control.grimoire"
+                        },
+                        "4": {
+                            "name": "entity.name.function.grimoire"
+                        }
+                    }
+                },
+                {
+                    "match": "(\\b(task|func)\\b( *))([A-Za-z]([A-Za-z0-9_]*)( *))\\(",
+                    "captures": {
+                        "1": {
+                            "name": "keyword.control.grimoire"
+                        },
+                        "4": {
+                            "name": "entity.name.function.grimoire"
+                        }
+                    }
+                },
+                {
+                    "name": "keyword.control.grimoire",
+                    "match": "\\b(def|struct)\\b"
+                },
+                {
+                    "name": "storage.type.grimoire",
+                    "match": "\\b(void|int|float|bool|string|array|obj|task|func|var|let)\\b"
+                },
+                {
+                    "match": "([A-Za-z]([A-Za-z0-9_]*)( *))\\(",
+                    "captures": {
+                        "1": {
+                            "name": "entity.name.function.grimoire"
+                        }
+                    }
+                },
+                {
+                    "name": "variable.language.grimoire",
+                    "match": "[A-Za-z]([A-Za-z0-9_]*)"
+                }
+            ]
+        },
+		"strings": {
+			"name": "string.quoted.double.grimoire",
+			"begin": "\"",
+			"end": "\"",
+			"patterns": [
+				{
+					"name": "constant.character.escape.grimoire",
+					"match": "\\\\."
+				}
+			]
+        },
+        "constants": {
+            "patterns": [
+                {
+                    "name": "constant.numeric.float.grimoire",				
+                    "match": "[0-9]+(\\.[0-9]+)"
+                },
+                {
+                    "name": "constant.numeric.integer.grimoire",				
+                    "match": "[0-9]+"
+                },
+                {
+                    "name": "constant.language.grimoire",
+                    "match": "\\b(true|false)\\b"
+                }
+            ]
+        },
+        "comments": {
+            "patterns": [
+                {
+                    "name": "comment.line.double-slash.grimoire",
+                    "match": "\/\/.*"
+                },
+                {
+                    "name": "comment.block.documentation.grimoire",
+                    "begin": "\/\\*\\*",
+                    "end": "\\*\/",
+                    "patterns": []
+                },
+                {
+                    "name": "comment.block.grimoire",
+                    "begin": "\/\\*",
+                    "end": "\\*\/",
+                    "patterns": []
+                }
+            ]
+        },
+        "supports": {
+            "patterns": [
+                {
+                    "name": "support.function.grimoire",
+                    "match": "\\b(to_string|print)\\b"
+                }
+            ]
+        }
+    },
+	"scopeName": "source.grimoire"
+}
