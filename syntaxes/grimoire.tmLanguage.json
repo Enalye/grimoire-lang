@@ -76,6 +76,10 @@
                     "match": "\\b(void|int|float|bool|string|array|obj|task|func|var|let)\\b"
                 },
                 {
+                    "name": "storage.type.grimoire",
+                    "match": "[A-Z]([A-Za-z0-9_]*)"
+                },
+                {
                     "match": "([A-Za-z]([A-Za-z0-9_]*)( *))\\(",
                     "captures": {
                         "1": {
@@ -85,7 +89,15 @@
                 },
                 {
                     "name": "variable.language.grimoire",
+                    "match": "\\b(self|object)\\b"
+                },
+                {
+                    "name": "entity.name.grimoire",
                     "match": "[A-Za-z]([A-Za-z0-9_]*)"
+                },
+                {
+                    "name": "punctuation.terminator.grimoire",
+                    "match": ";"
                 }
             ]
         },
