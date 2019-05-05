@@ -57,7 +57,7 @@
                     }
                 },
                 {
-                    "match": "(\\b(task|func)\\b( *))([A-Za-z]([A-Za-z0-9_]*)( *))\\(",
+                    "match": "(\\b(task|func|event)\\b( *))([A-Za-z]([A-Za-z0-9_]*)( *))\\(",
                     "captures": {
                         "1": {
                             "name": "keyword.control.grimoire"
