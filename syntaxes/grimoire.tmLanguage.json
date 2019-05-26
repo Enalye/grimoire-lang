@@ -69,11 +69,11 @@
                 },
                 {
                     "name": "keyword.control.grimoire",
-                    "match": "\\b(def|struct)\\b"
+                    "match": "\\b(struct|tuple)\\b"
                 },
                 {
                     "name": "storage.type.grimoire",
-                    "match": "\\b(void|int|float|bool|string|array|obj|task|func|var|let)\\b"
+                    "match": "\\b(void|int|float|bool|string|array|task|func|chan|var|let)\\b"
                 },
                 {
                     "name": "storage.type.grimoire",
@@ -116,7 +116,11 @@
             "patterns": [
                 {
                     "name": "constant.numeric.float.grimoire",				
-                    "match": "[0-9]+(\\.[0-9]+)"
+                    "match": "[0-9]+(\\.[0-9]+)f?"
+                },
+                {
+                    "name": "constant.numeric.float.grimoire",				
+                    "match": "[0-9]+f"
                 },
                 {
                     "name": "constant.numeric.integer.grimoire",				
