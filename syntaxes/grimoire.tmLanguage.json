@@ -23,7 +23,7 @@
 			"patterns": [
                 {
                     "name": "keyword.control.grimoire",
-                    "match": "\\b(main|if|unless|else|while|do|loop|for|return|kill|yield|break|continue|try|catch|raise|defer)\\b"
+                    "match": "\\b(main|if|unless|else|switch|select|case|while|do|loop|for|return|kill|yield|break|continue|try|catch|raise|defer)\\b"
                 },
                 {
                     "name": "keyword.control.import.grimoire",
@@ -35,7 +35,7 @@
                 },
                 {
                     "name": "keyword.operator.assignement.grimoire",
-                    "match": "\\b(\\+=|-=|\\*=|\/=|%=|=)\\b"
+                    "match": "\\b(\\+=|-=|\\*=|\/=|%=|=|<-)\\b"
                 },
                 {
                     "name": "keyword.operator.logical.grimoire",
