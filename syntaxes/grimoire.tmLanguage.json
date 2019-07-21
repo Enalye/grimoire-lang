@@ -46,7 +46,7 @@
                     "match": "\\b(\\+\\+|\\+|--|-|\\*|\/|%)\\b"
                 },
                 {
-                    "match": "(\\b(func)\\b( *))([A-Za-z]([A-Za-z0-9_]*)( *)\\b(\\+|-|\\*|\/|%|and|or|not|xor|==|!=|\\>=|\\<=|\\>|\\<)( *))\\(",
+                    "match": "(\\b(func)\\b( *))([A-Za-z_]([A-Za-z0-9_]*)\\s*\\b(\\+|-|\\*|\/|%|and|or|not|xor|==|!=|\\>=|\\<=|\\>|\\<)( *))\\(",
                     "captures": {
                         "1": {
                             "name": "keyword.control.grimoire"
@@ -57,7 +57,7 @@
                     }
                 },
                 {
-                    "match": "(\\b(task|func|event)\\b( *))([A-Za-z]([A-Za-z0-9_]*)( *))\\(",
+                    "match": "(\\b(task|func|event)\\b)\\s*([A-Za-z_]([A-Za-z0-9_]*)( *))\\(",
                     "captures": {
                         "1": {
                             "name": "keyword.control.grimoire"
@@ -68,8 +68,48 @@
                     }
                 },
                 {
-                    "name": "keyword.control.grimoire",
-                    "match": "\\b(struct|tuple)\\b"
+                    "match": "(\\.|:)\\s*([A-Za-z_][A-Za-z0-9_]*)",
+                    "captures": {
+                        "1": {
+                            "name": "punctuation.separator.grimoire"
+                        },
+                        "2": {
+                            "name": "variable.other.grimoire"
+                        }
+                    }
+                },
+                {
+                    "match": "\\b(def)\\s+([A-Za-z_]([A-Za-z0-9_]*))",
+                    "captures": {
+                        "1": {
+                            "name": "storage.type.class.grimoire"
+                        },
+                        "2": {
+                            "name": "entity.name.class.grimoire"
+                        }
+                    }
+                },
+                {
+                    "match": "(@)\\s*([A-Za-z_][A-Za-z0-9_]*)",
+                    "captures": {
+                        "1": {
+                            "name": "keyword.operator.grimoire"
+                        },
+                        "2": {
+                            "name": "entity.name.class.grimoire"
+                        }
+                    }
+                },
+                {
+                    "match": "\\b(tuple)\\s+([A-Za-z_]([A-Za-z0-9_]*))",
+                    "captures": {
+                        "1": {
+                            "name": "storage.type.class.grimoire"
+                        },
+                        "2": {
+                            "name": "entity.name.class.grimoire"
+                        }
+                    }
                 },
                 {
                     "name": "storage.type.grimoire",
@@ -80,7 +120,7 @@
                     "match": "[A-Z]([A-Za-z0-9_]*)"
                 },
                 {
-                    "match": "([A-Za-z]([A-Za-z0-9_]*)( *))\\(",
+                    "match": "([A-Za-z_]([A-Za-z0-9_]*))\\s*\\(",
                     "captures": {
                         "1": {
                             "name": "entity.name.function.grimoire"
@@ -89,7 +129,7 @@
                 },
                 {
                     "name": "variable.language.grimoire",
-                    "match": "\\b(self|object)\\b"
+                    "match": "\\b(self)\\b"
                 },
                 {
                     "name": "entity.name.grimoire",
