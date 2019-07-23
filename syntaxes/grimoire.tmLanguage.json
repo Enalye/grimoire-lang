@@ -50,23 +50,37 @@
                     "match": "\\b(\\+\\+|\\+|--|-|\\*|\/|%)\\b"
                 },
                 {
-                    "match": "(\\b(func)\\b( *))([A-Za-z_]([A-Za-z0-9_]*)\\s*\\b(\\+|-|\\*|\/|%|and|or|not|xor|==|!=|\\>=|\\<=|\\>|\\<)( *))\\(",
+                    "match": "\\b(func)\\b\\s*\\b(operator)\\b\\s*(\\+|-|\\*|\/|%|and|or|not|xor|==|!=|\\>=|\\<=|\\>|\\<)\\s*\\(",
                     "captures": {
                         "1": {
                             "name": "keyword.control.grimoire"
                         },
-                        "4": {
-                            "name": "entity.name.function.grimoire"
+                        "2": {                          
+                            "name": "keyword.control.grimoire"
+                        },
+                        "3": {                         
+                            "name": "keyword.control.grimoire"
                         }
                     }
                 },
                 {
-                    "match": "(\\b(task|func|event)\\b)\\s*([A-Za-z_]([A-Za-z0-9_]*)( *))\\(",
+                    "match": "\\b(func)\\b\\s*\\b(as)\\b\\s*\\s*\\(",
                     "captures": {
                         "1": {
                             "name": "keyword.control.grimoire"
                         },
-                        "4": {
+                        "2": {                          
+                            "name": "keyword.control.grimoire"
+                        }
+                    }
+                },
+                {
+                    "match": "\\b(task|func|event)\\b\\s*([A-Za-z_]([A-Za-z0-9_]*))\\s*\\(",
+                    "captures": {
+                        "1": {
+                            "name": "keyword.control.grimoire"
+                        },
+                        "2": {
                             "name": "entity.name.function.grimoire"
                         }
                     }
@@ -83,7 +97,7 @@
                     }
                 },
                 {
-                    "match": "\\b(def)\\s+([A-Za-z_]([A-Za-z0-9_]*))",
+                    "match": "\\b(struct)\\s+([A-Za-z_]([A-Za-z0-9_]*))",
                     "captures": {
                         "1": {
                             "name": "storage.type.class.grimoire"
