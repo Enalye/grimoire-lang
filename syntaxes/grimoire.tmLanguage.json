@@ -23,7 +23,11 @@
 			"patterns": [
                 {
                     "name": "keyword.control.grimoire",
-                    "match": "\\b(main|if|unless|else|switch|select|case|while|do|loop|for|return|kill|yield|break|continue|try|catch|raise|defer)\\b"
+                    "match": "\\b(main|if|unless|else|switch|select|case|while|do|loop|for|return|kill|yield|break|continue|as|try|catch|raise|defer)\\b"
+                },
+                {
+                    "name": "keyword.control.copy.grimoire",
+                    "match": "(\\^)"
                 },
                 {
                     "name": "keyword.control.import.grimoire",
@@ -31,7 +35,7 @@
                 },
                 {
                     "name": "keyword.operator.word.grimoire",
-                    "match": "\\b(and|or|not|xor|as|is)\\b"
+                    "match": "\\b(and|or|not|xor|is)\\b"
                 },
                 {
                     "name": "keyword.operator.assignement.grimoire",
