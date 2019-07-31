@@ -26,10 +26,6 @@
                     "match": "\\b(main|if|unless|else|switch|select|case|while|do|loop|for|return|kill|yield|break|continue|as|try|catch|raise|defer)\\b"
                 },
                 {
-                    "name": "keyword.control.copy.grimoire",
-                    "match": "(\\^)"
-                },
-                {
                     "name": "keyword.control.import.grimoire",
                     "match": "\\b(import)\\b"
                 },
