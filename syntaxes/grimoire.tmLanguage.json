@@ -23,7 +23,7 @@
 			"patterns": [
                 {
                     "name": "keyword.control.grimoire",
-                    "match": "\\b(main|if|unless|else|switch|select|case|while|do|loop|for|return|kill|yield|break|continue|as|try|catch|raise|defer)\\b"
+                    "match": "\\b(main|if|unless|else|switch|select|case|while|until|do|loop|for|return|kill|killall|yield|break|continue|as|try|catch|raise|defer)\\b"
                 },
                 {
                     "name": "keyword.control.import.grimoire",
@@ -34,8 +34,12 @@
                     "match": "\\b(and|or|not|xor|is)\\b"
                 },
                 {
+                    "name": "keyword.operator.new.grimoire",
+                    "match": "\\b(new)\\b"
+                },
+                {
                     "name": "keyword.operator.assignement.grimoire",
-                    "match": "\\b(\\+=|-=|\\*=|\/=|%=|=|<-)\\b"
+                    "match": "\\b(\\+=|-=|\\*=|\/=|%=|=|~=|<-)\\b"
                 },
                 {
                     "name": "keyword.operator.logical.grimoire",
@@ -82,10 +86,21 @@
                     }
                 },
                 {
-                    "match": "(\\.|:)\\s*([A-Za-z_][A-Za-z0-9_]*)",
+                    "match": "(::)\\s*([A-Za-z_][A-Za-z0-9_]*)",
                     "captures": {
                         "1": {
-                            "name": "punctuation.separator.grimoire"
+                            "name": "punctuation.accessor.grimoire"
+                        },
+                        "2": {
+                            "name": "entity.name.function.grimoire"
+                        }
+                    }
+                },
+                {
+                    "match": "(\\.)\\s*([A-Za-z_][A-Za-z0-9_]*)",
+                    "captures": {
+                        "1": {
+                            "name": "punctuation.accessor.grimoire"
                         },
                         "2": {
                             "name": "variable.other.grimoire"
@@ -127,7 +142,7 @@
                 },
                 {
                     "name": "storage.type.grimoire",
-                    "match": "\\b(void|int|float|bool|string|array|task|func|chan|var|let)\\b"
+                    "match": "\\b(void|int|float|bool|string|array|task|func|chan|let)\\b"
                 },
                 {
                     "name": "storage.type.grimoire",
