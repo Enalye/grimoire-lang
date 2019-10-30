@@ -27,7 +27,7 @@
                 },
                 {
                     "name": "keyword.control.import.grimoire",
-                    "match": "\\b(import)\\b"
+                    "match": "\\b(use)\\b"
                 },
                 {
                     "name": "keyword.operator.word.grimoire",
