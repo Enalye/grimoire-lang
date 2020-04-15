@@ -108,13 +108,35 @@
                     }
                 },
                 {
-                    "match": "\\b(object)\\s+([A-Za-z_]([A-Za-z0-9_]*))",
+                    "match": "\\b(class)\\s+([A-Za-z_]([A-Za-z0-9_]*))",
                     "captures": {
                         "1": {
                             "name": "storage.type.class.grimoire"
                         },
                         "2": {
                             "name": "entity.name.class.grimoire"
+                        }
+                    }
+                },
+                {
+                    "match": "\\b(enum)\\s+([A-Za-z_]([A-Za-z0-9_]*))",
+                    "captures": {
+                        "1": {
+                            "name": "storage.type.enum.grimoire"
+                        },
+                        "2": {
+                            "name": "entity.name.enum.grimoire"
+                        }
+                    }
+                },
+                {
+                    "match": "\\b(type)\\s+([A-Za-z_]([A-Za-z0-9_]*))",
+                    "captures": {
+                        "1": {
+                            "name": "storage.type.typedef.grimoire"
+                        },
+                        "2": {
+                            "name": "entity.name.typedef.grimoire"
                         }
                     }
                 },
@@ -123,17 +145,6 @@
                     "captures": {
                         "1": {
                             "name": "keyword.operator.grimoire"
-                        },
-                        "2": {
-                            "name": "entity.name.class.grimoire"
-                        }
-                    }
-                },
-                {
-                    "match": "\\b(tuple)\\s+([A-Za-z_]([A-Za-z0-9_]*))",
-                    "captures": {
-                        "1": {
-                            "name": "storage.type.class.grimoire"
                         },
                         "2": {
                             "name": "entity.name.class.grimoire"
