@@ -108,13 +108,19 @@
                     }
                 },
                 {
-                    "match": "\\b(class)\\s+([A-Za-z_]([A-Za-z0-9_]*))",
+                    "match": "\\b(class)\\s+([A-Za-z_]([A-Za-z0-9_]*))\\s*(:)?\\s*([A-Za-z_]([A-Za-z0-9_]*))?",
                     "captures": {
                         "1": {
                             "name": "storage.type.class.grimoire"
                         },
                         "2": {
                             "name": "entity.name.class.grimoire"
+                        },
+                        "4": {
+                            "name": "punctuation.separator.grimoire"
+                        },
+                        "5": {
+                            "name": "entity.other.inherited-class.grimoire"
                         }
                     }
                 },
@@ -153,7 +159,7 @@
                 },
                 {
                     "name": "storage.type.grimoire",
-                    "match": "\\b(void|int|float|bool|string|array|task|func|chan|let)\\b"
+                    "match": "\\b(pub|void|int|float|bool|string|array|task|func|chan|let)\\b"
                 },
                 {
                     "name": "storage.type.grimoire",
