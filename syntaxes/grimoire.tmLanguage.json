@@ -34,7 +34,7 @@
                     "match": "\\b(and|or|not|xor|is)\\b"
                 },
                 {
-                    "name": "keyword.operator.new.grimoire",
+                    "name": "keyword.other.new.grimoire",
                     "match": "\\b(new)\\b"
                 },
                 {
@@ -86,17 +86,6 @@
                     }
                 },
                 {
-                    "match": "(:)\\s*([A-Za-z_][A-Za-z0-9_]*)",
-                    "captures": {
-                        "1": {
-                            "name": "punctuation.accessor.grimoire"
-                        },
-                        "2": {
-                            "name": "entity.name.function.grimoire"
-                        }
-                    }
-                },
-                {
                     "match": "(\\.)\\s*([A-Za-z_][A-Za-z0-9_]*)",
                     "captures": {
                         "1": {
@@ -121,6 +110,17 @@
                         },
                         "5": {
                             "name": "entity.other.inherited-class.grimoire"
+                        }
+                    }
+                },
+                {
+                    "match": "(:)\\s*([A-Za-z_][A-Za-z0-9_]*)",
+                    "captures": {
+                        "1": {
+                            "name": "punctuation.accessor.grimoire"
+                        },
+                        "2": {
+                            "name": "entity.name.function.grimoire"
                         }
                     }
                 },
@@ -159,7 +159,7 @@
                 },
                 {
                     "name": "storage.type.grimoire",
-                    "match": "\\b(pub|void|int|float|bool|string|array|task|func|chan|let)\\b"
+                    "match": "\\b(void|int|float|bool|string|array|task|func|chan|let)\\b"
                 },
                 {
                     "name": "storage.type.grimoire",
@@ -174,8 +174,16 @@
                     }
                 },
                 {
+                    "name": "storage.modifier.grimoire",
+                    "match": "\\b(pub)\\b"
+                },
+                {
                     "name": "variable.language.grimoire",
                     "match": "\\b(self)\\b"
+                },
+                {
+                    "name": "constant.language.grimoire",
+                    "match": "\\b(true|false|null)\\b"
                 },
                 {
                     "name": "entity.name.grimoire",
@@ -211,10 +219,6 @@
                 {
                     "name": "constant.numeric.integer.grimoire",				
                     "match": "[0-9]+"
-                },
-                {
-                    "name": "constant.language.grimoire",
-                    "match": "\\b(true|false)\\b"
                 }
             ]
         },
