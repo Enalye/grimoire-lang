@@ -1,182 +1,862 @@
 {
-	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
-	"name": "Grimoire",
-	"patterns": [
+    "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+    "name": "Grimoire",
+    "patterns": [
         {
-            "include": "#supports"
-        },
-		{
-			"include": "#keywords"
-		},
-		{
-			"include": "#strings"
+            "include": "#use"
         },
         {
-			"include": "#constants"
+            "include": "#global-keyword"
         },
         {
-            "include": "#comments"
+            "include": "#type"
+        },
+        {
+            "include": "#assignment"
+        },
+        {
+            "include": "#template-decl"
+        },
+        {
+            "include": "#type-decl"
+        },
+        {
+            "include": "#enum-decl"
+        },
+        {
+            "include": "#class-decl"
+        },
+        {
+            "include": "#function-decl"
+        },
+        {
+            "include": "#task-decl"
+        },
+        {
+            "include": "#event-decl"
+        },
+        {
+            "include": "#main-decl"
+        },
+        {
+            "include": "#comment"
+        },
+        {
+            "include": "#string"
+        },
+        {
+            "include": "#block"
         }
-	],
-	"repository": {
-		"keywords": {
-			"patterns": [
+    ],
+    "repository": {
+        "main-decl": {
+            "begin": "\\bmain\\b",
+            "beginCaptures": {
+                "0": {
+                    "name": "keyword.control.main.grimoire"
+                }
+            },
+            "end": "(?<=})",
+            "patterns": [
                 {
-                    "name": "keyword.control.grimoire",
-                    "match": "\\b(main|if|unless|else|switch|select|case|while|until|do|loop|for|return|kill|killall|yield|break|continue|as|try|catch|raise|defer)\\b"
+                    "include": "#comment"
                 },
                 {
-                    "name": "keyword.control.import.grimoire",
-                    "match": "\\b(use)\\b"
+                    "include": "#block"
+                }
+            ]
+        },
+        "function-decl": {
+            "begin": "\\bfunc\\b",
+            "beginCaptures": {
+                "0": {
+                    "name": "keyword.control.function.grimoire"
+                }
+            },
+            "end": "(?<=})",
+            "patterns": [
+                {
+                    "begin": "\\boperator\\b",
+                    "beginCaptures": {
+                        "0": {
+                            "name": "keyword.control.operator.grimoire"
+                        }
+                    },
+                    "end": "\\+|-|\\*|\/|%|and|or|not|xor|==|!=|\\>=|\\<=|\\>|\\<",
+                    "endCaptures": {
+                        "0": {
+                            "name": "keyword.control.operator.grimoire"
+                        }
+                    },
+                    "patterns": [
+                        {
+                            "include": "#comment"
+                        }
+                    ]
                 },
                 {
-                    "name": "keyword.operator.word.grimoire",
-                    "match": "\\b(and|or|not|xor|is)\\b"
+                    "match": "\\bas\\b",
+                    "name": "keyword.control.as.grimoire"
                 },
                 {
-                    "name": "keyword.other.new.grimoire",
-                    "match": "\\b(new)\\b"
+                    "include": "#comment"
                 },
                 {
-                    "name": "keyword.operator.assignement.grimoire",
-                    "match": "\\b(\\+=|-=|\\*=|\/=|%=|=|~=|<-)\\b"
+                    "include": "#template-variable-list"
                 },
                 {
-                    "name": "keyword.operator.logical.grimoire",
-                    "match": "\\b(==|!=|\\>=|\\<=|\\>|\\<)\\b"
+                    "include": "#block"
                 },
                 {
-                    "name": "keyword.operator.arithmetic.grimoire",
-                    "match": "\\b(\\+\\+|\\+|--|-|\\*|\/|%)\\b"
+                    "include": "#type"
                 },
                 {
-                    "match": "\\b(func)\\b\\s*\\b(operator)\\b\\s*(\\+|-|\\*|\/|%|and|or|not|xor|==|!=|\\>=|\\<=|\\>|\\<)\\s*\\(",
-                    "captures": {
-                        "1": {
-                            "name": "keyword.control.grimoire"
-                        },
-                        "2": {                          
-                            "name": "keyword.control.grimoire"
-                        },
-                        "3": {                         
-                            "name": "keyword.control.grimoire"
+                    "include": "#parameter-list"
+                },
+                {
+                    "match": "[_[:alpha:]][_[:alnum:]]*",
+                    "name": "entity.name.function.grimoire"
+                }
+            ]
+        },
+        "task-decl": {
+            "begin": "\\btask\\b",
+            "beginCaptures": {
+                "0": {
+                    "name": "keyword.control.function.grimoire"
+                }
+            },
+            "end": "(?<=})",
+            "patterns": [
+                {
+                    "include": "#comment"
+                },
+                {
+                    "include": "#template-variable-list"
+                },
+                {
+                    "include": "#block"
+                },
+                {
+                    "include": "#type"
+                },
+                {
+                    "include": "#parameter-list"
+                },
+                {
+                    "match": "[_[:alpha:]][_[:alnum:]]*",
+                    "name": "entity.name.function.grimoire"
+                }
+            ]
+        },
+        "event-decl": {
+            "begin": "\\bevent\\b",
+            "beginCaptures": {
+                "0": {
+                    "name": "keyword.control.function.grimoire"
+                }
+            },
+            "end": "(?<=})",
+            "patterns": [
+                {
+                    "include": "#comment"
+                },
+                {
+                    "include": "#block"
+                },
+                {
+                    "include": "#type"
+                },
+                {
+                    "include": "#parameter-list"
+                },
+                {
+                    "match": "[_[:alpha:]][_[:alnum:]]*",
+                    "name": "entity.name.function.grimoire"
+                }
+            ]
+        },
+        "parameter-list": {
+            "begin": "\\(",
+            "beginCaptures": {
+                "0": {
+                    "name": "punctuation.parenthesis.open.grimoire"
+                }
+            },
+            "end": "\\)",
+            "endCaptures": {
+                "0": {
+                    "name": "punctuation.parenthesis.close.grimoire"
+                }
+            },
+            "patterns": [
+                {
+                    "include": "#comment"
+                },
+                {
+                    "include": "#type"
+                },
+                {
+                    "begin": "(?<=,|\\(\\s*)",
+                    "end": "[_[:alpha:]][_[:alnum:]]*",
+                    "endCaptures": {
+                        "0": {
+                            "name": "storage.type.grimoire"
                         }
                     }
                 },
                 {
-                    "match": "\\b(func)\\b\\s*\\b(as)\\b\\s*\\s*\\(",
-                    "captures": {
-                        "1": {
-                            "name": "keyword.control.grimoire"
-                        },
-                        "2": {                          
-                            "name": "keyword.control.grimoire"
-                        }
-                    }
+                    "name": "variable.parameter.grimoire",
+                    "match": "[_[:alpha:]][_[:alnum:]]*"
                 },
                 {
-                    "match": "\\b(task|func|event)\\b\\s*([A-Za-z_]([A-Za-z0-9_]*))\\s*\\(",
-                    "captures": {
-                        "1": {
-                            "name": "keyword.control.grimoire"
-                        },
-                        "2": {
-                            "name": "entity.name.function.grimoire"
-                        }
-                    }
+                    "include": "#comma"
+                }
+            ]
+        },
+        "template-variable-list": {
+            "begin": "<",
+            "beginCaptures": {
+                "0": {
+                    "name": "punctuation.bracket.angle.open.grimoire"
+                }
+            },
+            "end": ">",
+            "endCaptures": {
+                "0": {
+                    "name": "punctuation.bracket.angle.close.grimoire"
+                }
+            },
+            "patterns": [
+                {
+                    "include": "#comment"
                 },
                 {
-                    "match": "(\\.)\\s*([A-Za-z_][A-Za-z0-9_]*)",
-                    "captures": {
-                        "1": {
-                            "name": "punctuation.accessor.grimoire"
-                        },
-                        "2": {
-                            "name": "variable.other.grimoire"
-                        }
-                    }
+                    "name": "variable.parameter.grimoire",
+                    "match": "[_[:alpha:]][_[:alnum:]]*"
                 },
                 {
-                    "match": "\\b(class)\\s+([A-Za-z_]([A-Za-z0-9_]*))\\s*(:)?\\s*([A-Za-z_]([A-Za-z0-9_]*))?",
-                    "captures": {
-                        "1": {
-                            "name": "storage.type.class.grimoire"
+                    "include": "#comma"
+                }
+            ]
+        },
+        "template-list": {
+            "begin": "<",
+            "beginCaptures": {
+                "0": {
+                    "name": "punctuation.bracket.angle.open.grimoire"
+                }
+            },
+            "end": ">",
+            "endCaptures": {
+                "0": {
+                    "name": "punctuation.bracket.angle.close.grimoire"
+                }
+            },
+            "patterns": [
+                {
+                    "include": "#comment"
+                },
+                {
+                    "include": "#type"
+                },
+                {
+                    "name": "storage.type.grimoire",
+                    "match": "[_[:alpha:]][_[:alnum:]]*"
+                },
+                {
+                    "include": "#comma"
+                }
+            ]
+        },
+        "global-keyword": {
+            "match": "\\b(pub)\\b",
+            "name": "storage.modifier.grimoire"
+        },
+        "type": {
+            "patterns": [
+                {
+                    "match": "\\b(let|int|float|bool|string)\\b",
+                    "name": "storage.type.grimoire"
+                },
+                {
+                    "begin": "\\barray\\b",
+                    "beginCaptures": {
+                        "0": {
+                            "name": "storage.type.grimoire"
+                        }
+                    },
+                    "end": "(?<=\\))",
+                    "patterns": [
+                        {
+                            "include": "#comment"
                         },
-                        "2": {
+                        {
+                            "begin": "\\(",
+                            "beginCaptures": {
+                                "0": {
+                                    "name": "punctuation.parenthesis.open.grimoire"
+                                }
+                            },
+                            "end": "\\)",
+                            "endCaptures": {
+                                "0": {
+                                    "name": "punctuation.parenthesis.close.grimoire"
+                                }
+                            },
+                            "patterns": [
+                                {
+                                    "include": "#comment"
+                                },
+                                {
+                                    "include": "#type"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "begin": "\\btask|func\\b\\s*(?=\\()",
+                    "beginCaptures": {
+                        "0": {
+                            "name": "storage.type.grimoire"
+                        }
+                    },
+                    "end": "(?<=\\))",
+                    "patterns": [
+                        {
+                            "include": "#comment"
+                        },
+                        {
+                            "begin": "\\(",
+                            "beginCaptures": {
+                                "0": {
+                                    "name": "punctuation.parenthesis.open.grimoire"
+                                }
+                            },
+                            "end": "\\)",
+                            "endCaptures": {
+                                "0": {
+                                    "name": "punctuation.parenthesis.close.grimoire"
+                                }
+                            },
+                            "patterns": [
+                                {
+                                    "include": "#comment"
+                                },
+                                {
+                                    "include": "#type"
+                                },
+                                {
+                                    "match": ",",
+                                    "name": "punctuation.comma.grimoire"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "begin": "\\bchan\\b",
+                    "beginCaptures": {
+                        "0": {
+                            "name": "storage.type.grimoire"
+                        }
+                    },
+                    "end": "(?<=\\))",
+                    "patterns": [
+                        {
+                            "include": "#comment"
+                        },
+                        {
+                            "begin": "\\(",
+                            "beginCaptures": {
+                                "0": {
+                                    "name": "punctuation.parenthesis.open.grimoire"
+                                }
+                            },
+                            "end": "\\)",
+                            "endCaptures": {
+                                "0": {
+                                    "name": "punctuation.parenthesis.close.grimoire"
+                                }
+                            },
+                            "patterns": [
+                                {
+                                    "include": "#comment"
+                                },
+                                {
+                                    "include": "#type"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        "assignment": {
+            "begin": "=",
+            "beginCaptures": {
+                "0": {
+                    "name": "keyword.operator.assignement.grimoire"
+                }
+            },
+            "end": ";",
+            "endCaptures": {
+                "0": {
+                    "name": "punctuation.terminator.grimoire"
+                }
+            },
+            "patterns": [
+                {
+                    "include": "#comment"
+                },
+                {
+                    "include": "#subexpression"
+                }
+            ]
+        },
+        "block": {
+            "patterns": [
+                {
+                    "name": "meta.block.grimoire",
+                    "begin": "{",
+                    "beginCaptures": {
+                        "0": {
+                            "name": "punctuation.curlybrace.open.grimoire"
+                        }
+                    },
+                    "end": "}",
+                    "endCaptures": {
+                        "0": {
+                            "name": "punctuation.curlybrace.close.grimoire"
+                        }
+                    },
+                    "patterns": [
+                        {
+                            "include": "#block_internal"
+                        }
+                    ]
+                }
+            ]
+        },
+        "block_internal": {
+            "patterns": [
+                {
+                    "include": "#expression"
+                },
+                {
+                    "include": "#block"
+                }
+            ]
+        },
+        "use": {
+            "begin": "\\buse\\b",
+            "beginCaptures": {
+                "0": {
+                    "name": "keyword.control.import.grimoire"
+                }
+            },
+            "end": "(?<=\"|})",
+            "patterns": [
+                {
+                    "include": "#comment"
+                },
+                {
+                    "include": "#use-string"
+                },
+                {
+                    "begin": "{",
+                    "beginCaptures": {
+                        "0": {
+                            "name": "punctuation.curlybrace.open.grimoire"
+                        }
+                    },
+                    "end": "}",
+                    "endCaptures": {
+                        "0": {
+                            "name": "punctuation.curlybrace.close.grimoire"
+                        }
+                    },
+                    "patterns": [
+                        {
+                            "include": "#comment"
+                        },
+                        {
+                            "include": "#use-string"
+                        }
+                    ]
+                }
+            ]
+        },
+        "class-decl": {
+            "begin": "\\bclass\\b",
+            "beginCaptures": {
+                "0": {
+                    "name": "storage.type.class.grimoire"
+                }
+            },
+            "end": "(?<=})",
+            "patterns": [
+                {
+                    "include": "#comment"
+                },
+                {
+                    "match": "[_[:alpha:]][_[:alnum:]]*\\s*(:)?\\s*([_[:alpha:]][_[:alnum:]]*)?",
+                    "captures": {
+                        "0": {
                             "name": "entity.name.class.grimoire"
                         },
-                        "4": {
+                        "1": {
                             "name": "punctuation.separator.grimoire"
                         },
-                        "5": {
+                        "2": {
                             "name": "entity.other.inherited-class.grimoire"
                         }
                     }
                 },
                 {
-                    "match": "(:)\\s*([A-Za-z_][A-Za-z0-9_]*)",
-                    "captures": {
-                        "1": {
-                            "name": "punctuation.accessor.grimoire"
-                        },
-                        "2": {
-                            "name": "entity.name.function.grimoire"
+                    "begin": "(?<={)",
+                    "beginCaptures": {
+                        "0": {
+                            "name": "punctuation.curlybrace.open.grimoire"
                         }
-                    }
+                    },
+                    "end": "}",
+                    "endCaptures": {
+                        "0": {
+                            "name": "punctuation.curlybrace.close.grimoire"
+                        }
+                    },
+                    "patterns": [
+                        {
+                            "include": "#comment"
+                        },
+                        {
+                            "begin": "(?=[_[:alpha:]])",
+                            "end": ";",
+                            "endCaptures": {
+                                "0": {
+                                    "name": "punctuation.terminator.grimoire"
+                                }
+                            },
+                            "patterns": [
+                                {
+                                    "include": "#comment"
+                                },
+                                {
+                                    "include": "#type"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        "enum-decl": {
+            "begin": "\\benum\\b",
+            "beginCaptures": {
+                "0": {
+                    "name": "storage.type.enum.grimoire"
+                }
+            },
+            "end": "(?<=})",
+            "patterns": [
+                {
+                    "include": "#comment"
                 },
                 {
-                    "match": "\\b(enum)\\s+([A-Za-z_]([A-Za-z0-9_]*))",
+                    "match": "[_[:alpha:]][_[:alnum:]]*",
                     "captures": {
-                        "1": {
-                            "name": "storage.type.enum.grimoire"
-                        },
-                        "2": {
-                            "name": "entity.name.enum.grimoire"
-                        }
-                    }
-                },
-                {
-                    "match": "\\b(type)\\s+([A-Za-z_]([A-Za-z0-9_]*))",
-                    "captures": {
-                        "1": {
-                            "name": "storage.type.typedef.grimoire"
-                        },
-                        "2": {
-                            "name": "entity.name.typedef.grimoire"
-                        }
-                    }
-                },
-                {
-                    "match": "(@)\\s*([A-Za-z_][A-Za-z0-9_]*)",
-                    "captures": {
-                        "1": {
-                            "name": "keyword.operator.grimoire"
-                        },
-                        "2": {
+                        "0": {
                             "name": "entity.name.class.grimoire"
                         }
                     }
                 },
                 {
-                    "name": "storage.type.grimoire",
-                    "match": "\\b(void|int|float|bool|string|array|task|func|chan|let)\\b"
-                },
-                {
-                    "name": "storage.type.grimoire",
-                    "match": "[A-Z]([A-Za-z0-9_]*)"
-                },
-                {
-                    "match": "([A-Za-z_]([A-Za-z0-9_]*))\\s*\\(",
-                    "captures": {
-                        "1": {
-                            "name": "entity.name.function.grimoire"
+                    "begin": "(?<={)",
+                    "beginCaptures": {
+                        "0": {
+                            "name": "punctuation.curlybrace.open.grimoire"
                         }
-                    }
+                    },
+                    "end": "}",
+                    "endCaptures": {
+                        "0": {
+                            "name": "punctuation.curlybrace.close.grimoire"
+                        }
+                    },
+                    "patterns": [
+                        {
+                            "include": "#comment"
+                        },
+                        {
+                            "begin": "[_[:alpha:]][_[:alnum:]]*",
+                            "beginCaptures": {
+                                "0": {
+                                    "name": "entity.name.variable.enum-member.grimoire"
+                                }
+                            },
+                            "end": ";",
+                            "endCaptures": {
+                                "0": {
+                                    "name": "punctuation.terminator.grimoire"
+                                }
+                            },
+                            "patterns": [
+                                {
+                                    "include": "#comment"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        "type-decl": {
+            "begin": "\\btype\\b",
+            "beginCaptures": {
+                "0": {
+                    "name": "storage.type.typealias.grimoire"
+                }
+            },
+            "end": "(?<=;)",
+            "patterns": [
+                {
+                    "include": "#comment"
                 },
                 {
-                    "name": "storage.modifier.grimoire",
-                    "match": "\\b(pub)\\b"
+                    "include": "#type"
                 },
+                {
+                    "include": "#assignment"
+                },
+                {
+                    "include": "#identifier"
+                }
+            ]
+        },
+        "template-decl": {
+            "begin": "\\btemplate\\b",
+            "beginCaptures": {
+                "0": {
+                    "name": "keyword.control.template.grimoire"
+                }
+            },
+            "end": ";",
+            "endCaptures": {
+                "0": {
+                    "name": "punctuation.terminator.grimoire"
+                }
+            },
+            "patterns": [
+                {
+                    "include": "#comment"
+                },
+                {
+                    "include": "#template-list"
+                },
+                {
+                    "include": "#type"
+                },
+                {
+                    "match": "[_[:alpha:]][_[:alnum:]]*",
+                    "name": "entity.name.function.grimoire"
+                }
+            ]
+        },
+        "expression": {
+            "patterns": [
+                {
+                    "include": "#comment"
+                },
+                {
+                    "include": "#operator"
+                },
+                {
+                    "include": "#punctuation"
+                },
+                {
+                    "include": "#string"
+                },
+                {
+                    "include": "#type"
+                },
+                {
+                    "include": "#literal"
+                },
+                {
+                    "include": "#statement"
+                },
+                {
+                    "include": "#as"
+                },
+                {
+                    "include": "#support"
+                },
+                {
+                    "include": "#call"
+                },
+                {
+                    "include": "#field"
+                },
+                {
+                    "include": "#identifier"
+                },
+                {
+                    "include": "#numeric"
+                }
+            ]
+        },
+        "subexpression": {
+            "patterns": [
+                {
+                    "include": "#comment"
+                },
+                {
+                    "include": "#operator"
+                },
+                {
+                    "include": "#comma"
+                },
+                {
+                    "include": "#string"
+                },
+                {
+                    "include": "#type"
+                },
+                {
+                    "include": "#literal"
+                },
+                {
+                    "include": "#as"
+                },
+                {
+                    "include": "#support"
+                },
+                {
+                    "include": "#call"
+                },
+                {
+                    "include": "#field"
+                },
+                {
+                    "include": "#identifier"
+                },
+                {
+                    "include": "#numeric"
+                }
+            ]
+        },
+        "statement": {
+            "name": "keyword.control.grimoire",
+            "match": "\\b(if|unless|else|switch|select|case|while|until|do|loop|for|return|kill|killall|yield|break|continue|try|catch|raise|defer)\\b"
+        },
+        "as": {
+            "name": "keyword.control.grimoire",
+            "match": "\\bas\\b"
+        },
+        "operator": {
+            "patterns": [
+                {
+                    "name": "keyword.other.new.grimoire",
+                    "match": "\\bnew\\b"
+                },
+                {
+                    "name": "keyword.operator.assignement.grimoire",
+                    "match": "\\+=|-=|\\*=|\/=|%=|=|~=|<-"
+                },
+                {
+                    "name": "keyword.operator.logical.grimoire",
+                    "match": "==|!=|\\>=|\\<=|\\>|\\<"
+                },
+                {
+                    "name": "keyword.operator.arithmetic.grimoire",
+                    "match": "\\+\\+|\\+|--|-|\\*|\/|%"
+                },
+                {
+                    "name": "keyword.operator.word.grimoire",
+                    "match": "\\b(and|or|not|xor|is)\\b"
+                }
+            ]
+        },
+        "punctuation": {
+            "patterns": [
+                {
+                    "include": "#comma"
+                },
+                {
+                    "include": "#semicolon"
+                }
+            ]
+        },
+        "call": {
+            "patterns": [
+                {
+                    "include": "#method-call"
+                },
+                {
+                    "include": "#function-call"
+                }
+            ]
+        },
+        "function-call": {
+            "match": "[_[:alpha:]][_[:alnum:]]*(?=\\s*\\()",
+            "captures": {
+                "0": {
+                    "name": "entity.name.function.grimoire"
+                }
+            }
+        },
+        "field": {
+            "match": "(\\.)\\s*([_[:alpha:]][_[:alnum:]]*)",
+            "captures": {
+                "1": {
+                    "name": "punctuation.accessor.grimoire"
+                },
+                "2": {
+                    "name": "variable.other.grimoire"
+                }
+            }
+        },
+        "method-call": {
+            "match": ":{1,2}\\s*([_[:alpha:]][_[:alnum:]]*)",
+            "captures": {
+                "0": {
+                    "name": "punctuation.accessor.grimoire"
+                },
+                "1": {
+                    "name": "entity.name.function.grimoire"
+                }
+            }
+        },
+        "use-string": {
+            "name": "variable.parameter.import.grimoire",
+            "begin": "\"",
+            "end": "\"",
+            "patterns": [
+                {
+                    "name": "constant.character.escape.grimoire",
+                    "match": "\\\\."
+                }
+            ]
+        },
+        "string": {
+            "name": "string.quoted.double.grimoire",
+            "begin": "\"",
+            "end": "\"",
+            "patterns": [
+                {
+                    "name": "constant.character.escape.grimoire",
+                    "match": "\\\\."
+                }
+            ]
+        },
+        "identifier": {
+            "name": "entity.name.grimoire",
+            "match": "[_[:alpha:]][_[:alnum:]]*"
+        },
+        "literal": {
+            "patterns": [
                 {
                     "name": "variable.language.grimoire",
                     "match": "\\b(self)\\b"
@@ -184,72 +864,66 @@
                 {
                     "name": "constant.language.grimoire",
                     "match": "\\b(true|false|null)\\b"
-                },
-                {
-                    "name": "entity.name.grimoire",
-                    "match": "[A-Za-z]([A-Za-z0-9_]*)"
-                },
-                {
-                    "name": "punctuation.terminator.grimoire",
-                    "match": ";"
                 }
             ]
         },
-		"strings": {
-			"name": "string.quoted.double.grimoire",
-			"begin": "\"",
-			"end": "\"",
-			"patterns": [
-				{
-					"name": "constant.character.escape.grimoire",
-					"match": "\\\\."
-				}
-			]
-        },
-        "constants": {
+        "numeric": {
             "patterns": [
                 {
-                    "name": "constant.numeric.float.grimoire",				
-                    "match": "[0-9]+(\\.[0-9]+)f?"
+                    "name": "constant.numeric.float.grimoire",
+                    "match": "([0-9]+[0-9_]*)(\\.[0-9]+)f?"
                 },
                 {
-                    "name": "constant.numeric.float.grimoire",				
-                    "match": "[0-9]+f"
+                    "name": "constant.numeric.float.grimoire",
+                    "match": "([0-9][0-9_]*)f"
                 },
                 {
-                    "name": "constant.numeric.integer.grimoire",				
-                    "match": "[0-9]+"
+                    "name": "constant.numeric.integer.grimoire",
+                    "match": "([0-9][0-9_]*)"
                 }
             ]
         },
-        "comments": {
+        "comment": {
             "patterns": [
                 {
                     "name": "comment.line.double-slash.grimoire",
                     "match": "\/\/.*"
                 },
                 {
-                    "name": "comment.block.documentation.grimoire",
-                    "begin": "\/\\*\\*",
-                    "end": "\\*\/",
-                    "patterns": []
-                },
-                {
-                    "name": "comment.block.grimoire",
-                    "begin": "\/\\*",
-                    "end": "\\*\/",
-                    "patterns": []
+                    "include": "#comment-multilines"
                 }
             ]
         },
-        "supports": {
+        "comment-multilines": {
+            "name": "comment.block.grimoire",
+            "begin": "\/\\*",
+            "end": "\\*\/",
+            "patterns": [
+                {
+                    "include": "#comment-multilines"
+                }
+            ]
+        },
+        "comma": {
+            "match": ",",
+            "name": "punctuation.separator.comma.grimoire"
+        },
+        "semicolon": {
+            "match": ";",
+            "name": "punctuation.terminator.grimoire"
+        },
+        "support": {
             "patterns": [
                 {
                     "name": "support.function.grimoire",
-                    "match": "\\b(to_string|print)\\b"
+                    "match": "\\b(assert|clock|print|printl|range|size|resize|empty\\?|push_front|push_back|pop_front|pop_back|mix|lerp|rlerp|clamp|random|cos|sin|sqrt)\\b"
+                },
+                {
+                    "name": "support.class.grimoire",
+                    "match": "\\b(Color|Vec2)\\b"
                 }
             ]
         }
     },
-	"scopeName": "source.grimoire"
+    "scopeName": "source.grimoire"
 }
