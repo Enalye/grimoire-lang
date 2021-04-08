@@ -76,30 +76,14 @@
             "end": "(?<=})",
             "patterns": [
                 {
-                    "begin": "\\boperator\\b",
-                    "beginCaptures": {
-                        "0": {
-                            "name": "keyword.control.operator.grimoire"
-                        }
-                    },
-                    "end": "\\+|-|\\*|\/|%|and|or|not|xor|==|!=|\\>=|\\<=|\\>|\\<",
-                    "endCaptures": {
-                        "0": {
-                            "name": "keyword.control.operator.grimoire"
-                        }
-                    },
-                    "patterns": [
-                        {
-                            "include": "#comment"
-                        }
-                    ]
+                    "include": "#comment"
+                },
+                {
+                    "include": "#func-operator"
                 },
                 {
                     "match": "\\bas\\b",
                     "name": "keyword.control.as.grimoire"
-                },
-                {
-                    "include": "#comment"
                 },
                 {
                     "include": "#template-variable-list"
@@ -266,6 +250,25 @@
                 },
                 {
                     "include": "#comma"
+                }
+            ]
+        },
+        "func-operator": {
+            "begin": "\\boperator\\b",
+            "beginCaptures": {
+                "0": {
+                    "name": "keyword.control.operator.grimoire"
+                }
+            },
+            "end": "<=>|<<|>>|===|==|!=|\\>=|\\<=|<-|\\>|\\<|\\+|-|\\*|\/|%|\\^|and|or|not|xor",
+            "endCaptures": {
+                "0": {
+                    "name": "variable.parameter.operator.grimoire"
+                }
+            },
+            "patterns": [
+                {
+                    "include": "#comment"
                 }
             ]
         },
@@ -659,6 +662,9 @@
                     "include": "#type"
                 },
                 {
+                    "include": "#func-operator"
+                },
+                {
                     "match": "[_[:alpha:]][_[:alnum:]]*",
                     "name": "entity.name.function.grimoire"
                 }
@@ -762,20 +768,24 @@
                     "match": "\\bnew\\b"
                 },
                 {
-                    "name": "keyword.operator.assignement.grimoire",
-                    "match": "\\+=|-=|\\*=|\/=|%=|=|~=|<-"
+                    "name": "keyword.operator.arithmetic.grimoire",
+                    "match": "<<|>>"
                 },
                 {
                     "name": "keyword.operator.logical.grimoire",
-                    "match": "==|!=|\\>=|\\<=|\\>|\\<"
+                    "match": "<=>|===|==|!=|\\>=|\\<=|\\>|\\<"
+                },
+                {
+                    "name": "keyword.operator.assignement.grimoire",
+                    "match": "\\+=|-=|\\*=|\/=|%=|\\^=|=|~=|<-"
                 },
                 {
                     "name": "keyword.operator.arithmetic.grimoire",
-                    "match": "\\+\\+|\\+|--|-|\\*|\/|%"
+                    "match": "\\+\\+|\\+|--|-|\\*|\/|%|\\^"
                 },
                 {
                     "name": "keyword.operator.word.grimoire",
-                    "match": "\\b(and|or|not|xor|is)\\b"
+                    "match": "\\b(and|or|not|xor)\\b"
                 }
             ]
         },
