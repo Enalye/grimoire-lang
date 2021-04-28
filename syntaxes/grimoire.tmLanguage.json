@@ -504,18 +504,49 @@
                     "include": "#comment"
                 },
                 {
-                    "match": "[_[:alpha:]][_[:alnum:]]*[\\?|\\!]?\\s*((:)\\s*([_[:alpha:]][_[:alnum:]]*[\\?|\\!]?))?",
-                    "captures": {
+                    "begin": "[_[:alpha:]][_[:alnum:]]*[\\?|\\!]?",
+                    "beginCaptures": {
                         "0": {
                             "name": "entity.name.class.grimoire"
-                        },
-                        "2": {
-                            "name": "punctuation.separator.grimoire"
-                        },
-                        "3": {
-                            "name": "entity.other.inherited-class.grimoire"
                         }
-                    }
+                    },
+                    "end": "(?<={)",
+                    "patterns": [
+                        {
+                            "include": "#comment"
+                        },
+                        {
+                            "include": "#template-variable-list"
+                        },
+                        {
+                            "begin": ":",
+                            "beginCaptures": {
+                                "0": {
+                                    "name": "punctuation.separator.grimoire"
+                                }
+                            },
+                            "end": "(?<={)",
+                            "patterns": [
+                                {
+                                    "include": "#comment"
+                                },
+                                {
+                                    "match": "[_[:alpha:]][_[:alnum:]]*[\\?|\\!]?",
+                                    "name": "entity.other.inherited-class.grimoire"
+                                },
+                                {
+                                    "include": "#template-list"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "include": "#template-variable-list"
+                },
+                {
+                    "match": "[_[:alpha:]][_[:alnum:]]*[\\?|\\!]?",
+                    "name": "entity.name.class.grimoire"
                 },
                 {
                     "begin": "(?<={)",
