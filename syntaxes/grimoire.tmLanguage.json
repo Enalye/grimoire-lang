@@ -919,12 +919,16 @@
                     "match": "([0-9][0-9_]*)f"
                 },
                 {
-                    "name": "constant.numeric.integer.grimoire",
-                    "match": "([0-9][0-9_]*)"
+                    "name": "constant.numeric.float.grimoire",
+                    "match": "([0-9][0-9_]*)\\.f?"
+                },
+                {
+                    "name": "constant.numeric.float.grimoire",
+                    "match": "\\.([0-9][0-9_]*)f?"
                 },
                 {
                     "name": "constant.numeric.integer.grimoire",
-                    "match": "\\.([0-9][0-9_]*)f?"
+                    "match": "([0-9][0-9_]*)"
                 }
             ]
         },
