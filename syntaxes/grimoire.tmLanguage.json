@@ -996,7 +996,7 @@
             "patterns": [
                 {
                     "name": "support.function.grimoire",
-                    "match": "\\b(copy|size|resize|empty\\?|fill|clear|unshift|push|shift|pop|first|last|remove|slice\\!|reverse|insert|each|next|sort|findFirst|findLast|has\\?|capacity|full\\?|mix|min|max|clamp|rand|cos|sin|acos|asin|atan|atan2|exp|sqrt|pow|lerp|rlerp|abs|floor|ceil|round|truncate|positive\\?|negative\\?|zero\\?|nan\\?|even\\?|odd\\?|print|printl|range|assert|clock|Vec2i_one|Vec2f_one|Vec2f_half|Vec2i_up|Vec2f_up|Vec2i_down|Vec2f_down|Vec2i_left|Vec2f_left|Vec2i_right|Vec2f_right|unpack|zero\\?|sum|distance|distanceSq|dot|cross|normal|angle|rotate\\!|rotate|Vec2f_angled|length|lengthSq|normalize\\!|normalize)\\b"
+                    "match": "\\b(swap|copy|size|resize|empty\\?|fill|clear|unshift|push|shift|pop|first|last|remove|slice\\!|reverse|insert|each|next|sort|findFirst|findLast|has\\?|capacity|full\\?|mix|min|max|clamp|rand|cos|sin|acos|asin|atan|atan2|exp|sqrt|pow|lerp|rlerp|abs|floor|ceil|round|truncate|positive\\?|negative\\?|zero\\?|nan\\?|even\\?|odd\\?|print|printl|range|assert|clock|Vec2i_one|Vec2f_one|Vec2f_half|Vec2i_up|Vec2f_up|Vec2i_down|Vec2f_down|Vec2i_left|Vec2f_left|Vec2i_right|Vec2f_right|unpack|zero\\?|sum|distance|distanceSq|dot|cross|normal|angle|rotate\\!|rotate|Vec2f_angled|length|lengthSq|normalize\\!|normalize)\\b"
                 }
             ]
         }
