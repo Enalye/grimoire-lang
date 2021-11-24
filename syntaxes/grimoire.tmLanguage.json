@@ -33,10 +33,7 @@
             "include": "#task-decl"
         },
         {
-            "include": "#event-decl"
-        },
-        {
-            "include": "#main-decl"
+            "include": "#action-decl"
         },
         {
             "include": "#comment"
@@ -49,25 +46,8 @@
         }
     ],
     "repository": {
-        "main-decl": {
-            "begin": "\\bmain\\b",
-            "beginCaptures": {
-                "0": {
-                    "name": "keyword.control.main.grimoire"
-                }
-            },
-            "end": "(?<=})",
-            "patterns": [
-                {
-                    "include": "#comment"
-                },
-                {
-                    "include": "#block"
-                }
-            ]
-        },
         "function-decl": {
-            "begin": "\\bfunc\\b",
+            "begin": "\\b(fonction|function)\\b",
             "beginCaptures": {
                 "0": {
                     "name": "keyword.control.function.grimoire"
@@ -79,10 +59,10 @@
                     "include": "#comment"
                 },
                 {
-                    "include": "#func-operator"
+                    "include": "#operator"
                 },
                 {
-                    "match": "\\bas\\b",
+                    "match": "\\b(en|as)\\b",
                     "name": "keyword.control.as.grimoire"
                 },
                 {
@@ -104,7 +84,7 @@
             ]
         },
         "task-decl": {
-            "begin": "\\btask\\b",
+            "begin": "\\b(tâche|task)\\b",
             "beginCaptures": {
                 "0": {
                     "name": "keyword.control.function.grimoire"
@@ -133,8 +113,8 @@
                 }
             ]
         },
-        "event-decl": {
-            "begin": "\\bevent\\b",
+        "action-decl": {
+            "begin": "\\b(action)\\b",
             "beginCaptures": {
                 "0": {
                     "name": "keyword.control.function.grimoire"
@@ -253,37 +233,18 @@
                 }
             ]
         },
-        "func-operator": {
-            "begin": "\\boperator\\b",
-            "beginCaptures": {
-                "0": {
-                    "name": "keyword.control.operator.grimoire"
-                }
-            },
-            "end": "<=>|<<|>>|===|==|!=|\\>=|\\<=|<-|\\>|\\<|\\+|-|\\*|\/|%|\\^|and|or|not|xor",
-            "endCaptures": {
-                "0": {
-                    "name": "variable.parameter.operator.grimoire"
-                }
-            },
-            "patterns": [
-                {
-                    "include": "#comment"
-                }
-            ]
-        },
         "global-keyword": {
-            "match": "\\b(pub)\\b",
+            "match": "\\b(public)\\b",
             "name": "storage.modifier.grimoire"
         },
         "type": {
             "patterns": [
                 {
-                    "match": "\\b(let|int|float|bool|string)\\b",
+                    "match": "\\b(soit|let|ent|int|réel|float|bool|chaîne|string)\\b",
                     "name": "storage.type.grimoire"
                 },
                 {
-                    "begin": "\\barray\\b",
+                    "begin": "\\b(liste|list)\\b",
                     "beginCaptures": {
                         "0": {
                             "name": "storage.type.grimoire"
@@ -319,7 +280,7 @@
                     ]
                 },
                 {
-                    "begin": "\\btask|func\\b\\s*(?=\\()",
+                    "begin": "\\b(tâche|task|fonction|function)\\b\\s*(?=\\()",
                     "beginCaptures": {
                         "0": {
                             "name": "storage.type.grimoire"
@@ -359,7 +320,7 @@
                     ]
                 },
                 {
-                    "begin": "\\bchan\\b",
+                    "begin": "\\b(canal|channel)\\b",
                     "beginCaptures": {
                         "0": {
                             "name": "storage.type.grimoire"
@@ -453,13 +414,13 @@
             ]
         },
         "use": {
-            "begin": "\\buse\\b",
+            "begin": "\\b(utilise|use)\\b",
             "beginCaptures": {
                 "0": {
                     "name": "keyword.control.import.grimoire"
                 }
             },
-            "end": "(?<=\"|})",
+            "end": "(?<=\"|»|})",
             "patterns": [
                 {
                     "include": "#comment"
@@ -492,7 +453,7 @@
             ]
         },
         "class-decl": {
-            "begin": "\\bclass\\b",
+            "begin": "\\b(classe|class)\\b",
             "beginCaptures": {
                 "0": {
                     "name": "storage.type.class.grimoire"
@@ -590,7 +551,7 @@
             ]
         },
         "enum-decl": {
-            "begin": "\\benum\\b",
+            "begin": "\\b(énum|enum)\\b",
             "beginCaptures": {
                 "0": {
                     "name": "storage.type.enum.grimoire"
@@ -673,7 +634,7 @@
             ]
         },
         "template-decl": {
-            "begin": "\\btemplate\\b",
+            "begin": "\\b(patron|template)\\b",
             "beginCaptures": {
                 "0": {
                     "name": "keyword.control.template.grimoire"
@@ -696,7 +657,7 @@
                     "include": "#type"
                 },
                 {
-                    "include": "#func-operator"
+                    "include": "#operator"
                 },
                 {
                     "match": "[_[:alpha:]][_[:alnum:]]*[\\?|\\!]?",
@@ -711,6 +672,9 @@
                 },
                 {
                     "include": "#operator"
+                },
+                {
+                    "include": "#new"
                 },
                 {
                     "include": "#punctuation"
@@ -756,6 +720,9 @@
                     "include": "#operator"
                 },
                 {
+                    "include": "#new"
+                },
+                {
                     "include": "#comma"
                 },
                 {
@@ -789,18 +756,18 @@
         },
         "statement": {
             "name": "keyword.control.grimoire",
-            "match": "\\b(if|unless|else|switch|select|case|while|until|do|loop|for|return|kill|killall|yield|break|continue|try|catch|raise|defer)\\b"
+            "match": "\\b(si|if|sauf|unless|sinon|else|où|switch|sélect|select|cas|case|tant|while|jusque|until|fais|do|boucle|loop|pour|for|retourne|return|meurs|die|fin|end|passe|pass|casse|break|continue|essaie|try|récup|catch|lance|throw|décale|defer)\\b"
         },
         "as": {
             "name": "keyword.control.grimoire",
-            "match": "\\bas\\b"
+            "match": "\\b(comme|as)\\b"
+        },
+        "new": {
+            "name": "keyword.other.new.grimoire",
+            "match": "\\b(crée|new)\\b"
         },
         "operator": {
             "patterns": [
-                {
-                    "name": "keyword.other.new.grimoire",
-                    "match": "\\bnew\\b"
-                },
                 {
                     "name": "keyword.operator.arithmetic.grimoire",
                     "match": "<<|>>"
@@ -819,7 +786,7 @@
                 },
                 {
                     "name": "keyword.operator.word.grimoire",
-                    "match": "\\b(and|or|not|xor)\\b"
+                    "match": "\\b(et|and|ou|or|pas|not|à|to|et_bin|bit_and|ou_bin|bit_or|non_bin|bit_not|ouex_bin|bit_xor)\\b"
                 }
             ]
         },
@@ -891,8 +858,8 @@
         },
         "use-string": {
             "name": "variable.parameter.import.grimoire",
-            "begin": "\"",
-            "end": "\"",
+            "begin": "\"|«",
+            "end": "\"|»",
             "patterns": [
                 {
                     "name": "constant.character.escape.grimoire",
@@ -902,8 +869,8 @@
         },
         "string": {
             "name": "string.quoted.double.grimoire",
-            "begin": "\"",
-            "end": "\"",
+            "begin": "\"|«",
+            "end": "\"|»",
             "patterns": [
                 {
                     "name": "constant.character.escape.grimoire",
@@ -919,11 +886,11 @@
             "patterns": [
                 {
                     "name": "variable.language.grimoire",
-                    "match": "\\b(self)\\b"
+                    "match": "\\b(soi|self)\\b"
                 },
                 {
                     "name": "constant.language.grimoire",
-                    "match": "\\b(true|false|null)\\b"
+                    "match": "\\b(vrai|true|faux|false|null|nul)\\b"
                 }
             ]
         },
@@ -979,26 +946,6 @@
         "semicolon": {
             "match": ";",
             "name": "punctuation.terminator.grimoire"
-        },
-        "support": {
-            "patterns": [
-                {
-                    "name": "support.variable.grimoire",
-                    "match": "\\b(pi)\\b"
-                },
-                {
-                    "name": "support.class.grimoire",
-                    "match": "\\b(ArrayIter|StringIter|RangeIter|Color|Vec2|Vec2i|Vec2f|Pair|List|ListIter)\\b"
-                }
-            ]
-        },
-        "primitive": {
-            "patterns": [
-                {
-                    "name": "support.function.grimoire",
-                    "match": "\\b(swap|copy|size|resize|empty\\?|fill|clear|unshift|push|shift|pop|first|last|remove|slice\\!|reverse|insert|each|next|sort|findFirst|findLast|has\\?|capacity|full\\?|mix|min|max|clamp|rand|cos|sin|acos|asin|atan|atan2|exp|sqrt|pow|lerp|rlerp|abs|floor|ceil|round|truncate|positive\\?|negative\\?|zero\\?|nan\\?|even\\?|odd\\?|print|printl|range|assert|clock|Vec2i_one|Vec2f_one|Vec2f_half|Vec2i_up|Vec2f_up|Vec2i_down|Vec2f_down|Vec2i_left|Vec2f_left|Vec2i_right|Vec2f_right|unpack|zero\\?|sum|distance|distanceSq|dot|cross|normal|angle|rotate\\!|rotate|Vec2f_angled|length|lengthSq|normalize\\!|normalize)\\b"
-                }
-            ]
         }
     },
     "scopeName": "source.grimoire"
