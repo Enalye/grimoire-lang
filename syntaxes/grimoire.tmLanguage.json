@@ -320,7 +320,7 @@
                     ]
                 },
                 {
-                    "begin": "\\b(canal|channel)\\b",
+                    "begin": "\\b(canal|chan)\\b",
                     "beginCaptures": {
                         "0": {
                             "name": "storage.type.grimoire"
@@ -756,7 +756,7 @@
         },
         "statement": {
             "name": "keyword.control.grimoire",
-            "match": "\\b(si|if|sauf|unless|sinon|else|où|switch|sélect|select|cas|case|tant|while|jusque|until|fais|do|boucle|loop|pour|for|retourne|return|meurs|die|fin|end|passe|pass|casse|break|continue|essaie|try|récup|catch|lance|throw|décale|defer)\\b"
+            "match": "\\b(si|if|sauf|unless|sinon|else|où|switch|sélect|select|cas|case|tant|while|jusque|until|fais|do|boucle|loop|pour|for|retourne|return|tue|kill|tuetous|killall|cède|yield|casse|break|continue|essaie|try|récup|catch|lance|throw|décale|defer)\\b"
         },
         "as": {
             "name": "keyword.control.grimoire",
@@ -770,7 +770,7 @@
             "patterns": [
                 {
                     "name": "keyword.operator.arithmetic.grimoire",
-                    "match": "<<|>>"
+                    "match": "<<|>>|=>|->"
                 },
                 {
                     "name": "keyword.operator.logical.grimoire",
