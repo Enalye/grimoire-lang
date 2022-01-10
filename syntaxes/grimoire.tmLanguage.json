@@ -240,7 +240,7 @@
         "type": {
             "patterns": [
                 {
-                    "match": "\\b(soit|let|ent|int|réel|float|bool|chaîne|string)\\b",
+                    "match": "\\b(soit|let|entier|integer|réel|real|booléen|boolean|chaîne|string)\\b",
                     "name": "storage.type.grimoire"
                 },
                 {
@@ -320,7 +320,7 @@
                     ]
                 },
                 {
-                    "begin": "\\b(canal|chan)\\b",
+                    "begin": "\\b(canal|channel)\\b",
                     "beginCaptures": {
                         "0": {
                             "name": "storage.type.grimoire"
@@ -551,7 +551,7 @@
             ]
         },
         "enum-decl": {
-            "begin": "\\b(énum|enum)\\b",
+            "begin": "\\b(énumération|enumeration)\\b",
             "beginCaptures": {
                 "0": {
                     "name": "storage.type.enum.grimoire"
@@ -756,7 +756,7 @@
         },
         "statement": {
             "name": "keyword.control.grimoire",
-            "match": "\\b(si|if|sauf|unless|sinon|else|où|switch|sélect|select|cas|case|tant|while|jusque|until|fais|do|boucle|loop|pour|for|retourne|return|tue|kill|tuetous|killall|cède|yield|casse|break|continue|essaie|try|récup|catch|lance|throw|décale|defer)\\b"
+            "match": "\\b(si|if|sauf|unless|sinon|else|alternative|sélectionne|select|cas|case|tant|while|jusque|until|fais|do|boucle|loop|pour|for|retourne|return|meurs|die|quitte|quit|suspends|suspend|casse|break|continue|essaie|try|récupère|catch|lance|throw|décale|defer)\\b"
         },
         "as": {
             "name": "keyword.control.grimoire",
@@ -786,7 +786,7 @@
                 },
                 {
                     "name": "keyword.operator.word.grimoire",
-                    "match": "\\b(et|and|ou|or|pas|not|à|to|et_bin|bit_and|ou_bin|bit_or|non_bin|bit_not|ouex_bin|bit_xor)\\b"
+                    "match": "\\b(et|and|ou|or|pas|not|à|to|et_bin|bit_and|ou_bin|bit_or|non_bin|bit_not|ou_ex_bin|bit_xor)\\b"
                 }
             ]
         },
