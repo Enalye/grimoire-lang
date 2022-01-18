@@ -15,7 +15,7 @@
             "include": "#assignment"
         },
         {
-            "include": "#template-decl"
+            "include": "#instance-decl"
         },
         {
             "include": "#type-decl"
@@ -60,6 +60,10 @@
                 },
                 {
                     "include": "#operator"
+                },
+                {
+                    "match": "\\b(opérateur|operator)\\b",
+                    "name": "keyword.control.operator.grimoire"
                 },
                 {
                     "match": "\\b(en|as)\\b",
@@ -414,7 +418,7 @@
             ]
         },
         "use": {
-            "begin": "\\b(utilise|use)\\b",
+            "begin": "\\b(inclus|importe|include|import|utilise|use)\\b",
             "beginCaptures": {
                 "0": {
                     "name": "keyword.control.import.grimoire"
@@ -633,8 +637,8 @@
                 }
             ]
         },
-        "template-decl": {
-            "begin": "\\b(patron|template)\\b",
+        "instance-decl": {
+            "begin": "\\b(instance)\\b",
             "beginCaptures": {
                 "0": {
                     "name": "keyword.control.template.grimoire"
@@ -756,11 +760,11 @@
         },
         "statement": {
             "name": "keyword.control.grimoire",
-            "match": "\\b(si|if|sauf|unless|sinon|else|alternative|sélectionne|select|cas|case|tant|while|jusque|until|fais|do|boucle|loop|pour|for|retourne|return|meurs|die|quitte|quit|suspends|suspend|casse|break|continue|essaie|try|récupère|catch|lance|throw|décale|defer)\\b"
+            "match": "\\b(si|if|sauf|unless|sinon|else|alternative|sélectionne|select|cas|case|tant|while|jusque|until|fais|do|boucle|loop|pour|for|retourne|return|meurs|die|quitte|quit|suspends|suspend|casse|break|continue|isole|isolate|capture|erreur|error|reporte|defer)\\b"
         },
         "as": {
             "name": "keyword.control.grimoire",
-            "match": "\\b(comme|as)\\b"
+            "match": "\\b(en|as)\\b"
         },
         "new": {
             "name": "keyword.other.new.grimoire",
@@ -786,7 +790,7 @@
                 },
                 {
                     "name": "keyword.operator.word.grimoire",
-                    "match": "\\b(et|and|ou|or|pas|not|à|to|et_bin|bit_and|ou_bin|bit_or|non_bin|bit_not|ou_ex_bin|bit_xor)\\b"
+                    "match": "\\b(et|and|ou|or|pas|not|à|to|et_bin|bit_and|ou_bin|bit_or|non_bin|bit_not|xou_bin|bit_xor)\\b"
                 }
             ]
         },
