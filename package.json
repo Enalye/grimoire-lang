@@ -2,7 +2,7 @@
     "name": "grimoire-lang",
     "displayName": "Grimoire Language",
     "description": "Language support for the Grimoire language",
-    "version": "0.0.1",
+    "version": "0.5.2",
     "publisher": "Enalye",
     "engines": {
         "vscode": "^1.25.0"
