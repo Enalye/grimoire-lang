@@ -3,7 +3,7 @@
     "name": "Grimoire",
     "patterns": [
         {
-            "include": "#use"
+            "include": "#import"
         },
         {
             "include": "#global-keyword"
@@ -15,10 +15,10 @@
             "include": "#assignment"
         },
         {
-            "include": "#instance-decl"
+            "include": "#template-decl"
         },
         {
-            "include": "#type-decl"
+            "include": "#alias-decl"
         },
         {
             "include": "#enum-decl"
@@ -33,7 +33,7 @@
             "include": "#task-decl"
         },
         {
-            "include": "#action-decl"
+            "include": "#event-decl"
         },
         {
             "include": "#comment"
@@ -47,7 +47,7 @@
     ],
     "repository": {
         "function-decl": {
-            "begin": "\\b(fonction|function)\\b",
+            "begin": "\\b(function|fn|func|fun)\\b",
             "beginCaptures": {
                 "0": {
                     "name": "keyword.control.function.grimoire"
@@ -62,11 +62,11 @@
                     "include": "#operator"
                 },
                 {
-                    "match": "\\b(opérateur|operator)\\b",
+                    "match": "\\b(operator)\\b",
                     "name": "keyword.control.operator.grimoire"
                 },
                 {
-                    "match": "\\b(en|as)\\b",
+                    "match": "\\b(as)\\b",
                     "name": "keyword.control.as.grimoire"
                 },
                 {
@@ -82,13 +82,13 @@
                     "include": "#parameter-list"
                 },
                 {
-                    "match": "[_[:alpha:]][_[:alnum:]]*[\\?|\\!]?",
+                    "match": "[_[:alpha:]][_[:alnum:]]*[\\?]?",
                     "name": "entity.name.function.grimoire"
                 }
             ]
         },
         "task-decl": {
-            "begin": "\\b(tâche|task)\\b",
+            "begin": "\\b(task)\\b",
             "beginCaptures": {
                 "0": {
                     "name": "keyword.control.function.grimoire"
@@ -112,13 +112,13 @@
                     "include": "#parameter-list"
                 },
                 {
-                    "match": "[_[:alpha:]][_[:alnum:]]*[\\?|\\!]?",
+                    "match": "[_[:alpha:]][_[:alnum:]]*[\\?]?",
                     "name": "entity.name.function.grimoire"
                 }
             ]
         },
-        "action-decl": {
-            "begin": "\\b(action)\\b",
+        "event-decl": {
+            "begin": "\\b(event)\\b",
             "beginCaptures": {
                 "0": {
                     "name": "keyword.control.function.grimoire"
@@ -139,7 +139,7 @@
                     "include": "#parameter-list"
                 },
                 {
-                    "match": "[_[:alpha:]][_[:alnum:]]*[\\?|\\!]?",
+                    "match": "[_[:alpha:]][_[:alnum:]]*[\\?]?",
                     "name": "entity.name.function.grimoire"
                 }
             ]
@@ -166,7 +166,7 @@
                 },
                 {
                     "begin": "(?<=,|\\(\\s*)",
-                    "end": "[_[:alpha:]][_[:alnum:]]*[\\?|\\!]?",
+                    "end": "[_[:alpha:]][_[:alnum:]]*[\\?]?",
                     "endCaptures": {
                         "0": {
                             "name": "storage.type.grimoire"
@@ -175,7 +175,7 @@
                 },
                 {
                     "name": "variable.parameter.grimoire",
-                    "match": "[_[:alpha:]][_[:alnum:]]*[\\?|\\!]?"
+                    "match": "[_[:alpha:]][_[:alnum:]]*[\\?]?"
                 },
                 {
                     "include": "#comma"
@@ -201,7 +201,7 @@
                 },
                 {
                     "name": "variable.parameter.grimoire",
-                    "match": "[_[:alpha:]][_[:alnum:]]*[\\?|\\!]?"
+                    "match": "[_[:alpha:]][_[:alnum:]]*[\\?]?"
                 },
                 {
                     "include": "#comma"
@@ -230,7 +230,7 @@
                 },
                 {
                     "name": "storage.type.grimoire",
-                    "match": "[_[:alpha:]][_[:alnum:]]*[\\?|\\!]?"
+                    "match": "[_[:alpha:]][_[:alnum:]]*[\\?]?"
                 },
                 {
                     "include": "#comma"
@@ -244,11 +244,11 @@
         "type": {
             "patterns": [
                 {
-                    "match": "\\b(soit|let|entier|integer|réel|real|booléen|boolean|chaîne|string)\\b",
+                    "match": "\\b(let|int|real|bool|string)\\b",
                     "name": "storage.type.grimoire"
                 },
                 {
-                    "begin": "\\b(liste|list)\\b",
+                    "begin": "\\b(array)\\b",
                     "beginCaptures": {
                         "0": {
                             "name": "storage.type.grimoire"
@@ -284,7 +284,7 @@
                     ]
                 },
                 {
-                    "begin": "\\b(tâche|task|fonction|function)\\b\\s*(?=\\()",
+                    "begin": "\\b(task|function)\\b\\s*(?=\\()",
                     "beginCaptures": {
                         "0": {
                             "name": "storage.type.grimoire"
@@ -324,7 +324,7 @@
                     ]
                 },
                 {
-                    "begin": "\\b(canal|channel)\\b",
+                    "begin": "\\b(channel)\\b",
                     "beginCaptures": {
                         "0": {
                             "name": "storage.type.grimoire"
@@ -358,6 +358,9 @@
                             ]
                         }
                     ]
+                },
+                {
+                    "include": "#support-type"
                 }
             ]
         },
@@ -417,20 +420,20 @@
                 }
             ]
         },
-        "use": {
-            "begin": "\\b(inclus|importe|include|import|utilise|use)\\b",
+        "import": {
+            "begin": "\\b(import)\\b",
             "beginCaptures": {
                 "0": {
                     "name": "keyword.control.import.grimoire"
                 }
             },
-            "end": "(?<=\"|»|})",
+            "end": "(?<=\"|})",
             "patterns": [
                 {
                     "include": "#comment"
                 },
                 {
-                    "include": "#use-string"
+                    "include": "#import-string"
                 },
                 {
                     "begin": "{",
@@ -450,14 +453,14 @@
                             "include": "#comment"
                         },
                         {
-                            "include": "#use-string"
+                            "include": "#import-string"
                         }
                     ]
                 }
             ]
         },
         "class-decl": {
-            "begin": "\\b(classe|class)\\b",
+            "begin": "\\b(class)\\b",
             "beginCaptures": {
                 "0": {
                     "name": "storage.type.class.grimoire"
@@ -469,7 +472,7 @@
                     "include": "#comment"
                 },
                 {
-                    "begin": "[_[:alpha:]][_[:alnum:]]*[\\?|\\!]?",
+                    "begin": "[_[:alpha:]][_[:alnum:]]*[\\?]?",
                     "beginCaptures": {
                         "0": {
                             "name": "entity.name.class.grimoire"
@@ -496,7 +499,7 @@
                                     "include": "#comment"
                                 },
                                 {
-                                    "match": "[_[:alpha:]][_[:alnum:]]*[\\?|\\!]?",
+                                    "match": "[_[:alpha:]][_[:alnum:]]*[\\?]?",
                                     "name": "entity.other.inherited-class.grimoire"
                                 },
                                 {
@@ -510,7 +513,7 @@
                     "include": "#template-variable-list"
                 },
                 {
-                    "match": "[_[:alpha:]][_[:alnum:]]*[\\?|\\!]?",
+                    "match": "[_[:alpha:]][_[:alnum:]]*[\\?]?",
                     "name": "entity.name.class.grimoire"
                 },
                 {
@@ -555,7 +558,7 @@
             ]
         },
         "enum-decl": {
-            "begin": "\\b(énumération|enumeration)\\b",
+            "begin": "\\b(enum)\\b",
             "beginCaptures": {
                 "0": {
                     "name": "storage.type.enum.grimoire"
@@ -567,7 +570,7 @@
                     "include": "#comment"
                 },
                 {
-                    "match": "[_[:alpha:]][_[:alnum:]]*[\\?|\\!]?",
+                    "match": "[_[:alpha:]][_[:alnum:]]*[\\?]?",
                     "captures": {
                         "0": {
                             "name": "entity.name.class.grimoire"
@@ -592,7 +595,7 @@
                             "include": "#comment"
                         },
                         {
-                            "begin": "[_[:alpha:]][_[:alnum:]]*[\\?|\\!]?",
+                            "begin": "[_[:alpha:]][_[:alnum:]]*[\\?]?",
                             "beginCaptures": {
                                 "0": {
                                     "name": "entity.name.variable.enum-member.grimoire"
@@ -614,8 +617,8 @@
                 }
             ]
         },
-        "type-decl": {
-            "begin": "\\btype\\b",
+        "alias-decl": {
+            "begin": "\\b(alias)\\b",
             "beginCaptures": {
                 "0": {
                     "name": "storage.type.typealias.grimoire"
@@ -637,8 +640,8 @@
                 }
             ]
         },
-        "instance-decl": {
-            "begin": "\\b(instance)\\b",
+        "template-decl": {
+            "begin": "\\b(template)\\b",
             "beginCaptures": {
                 "0": {
                     "name": "keyword.control.template.grimoire"
@@ -664,7 +667,7 @@
                     "include": "#operator"
                 },
                 {
-                    "match": "[_[:alpha:]][_[:alnum:]]*[\\?|\\!]?",
+                    "match": "[_[:alpha:]][_[:alnum:]]*[\\?]?",
                     "name": "entity.name.function.grimoire"
                 }
             ]
@@ -699,7 +702,7 @@
                     "include": "#as"
                 },
                 {
-                    "include": "#support"
+                    "include": "#support-type"
                 },
                 {
                     "include": "#call"
@@ -742,7 +745,7 @@
                     "include": "#as"
                 },
                 {
-                    "include": "#support"
+                    "include": "#support-type"
                 },
                 {
                     "include": "#call"
@@ -760,15 +763,15 @@
         },
         "statement": {
             "name": "keyword.control.grimoire",
-            "match": "\\b(si|if|sauf|unless|sinon|else|alternative|sélectionne|select|cas|case|tant|while|jusque|until|fais|do|boucle|loop|pour|for|retourne|return|meurs|die|quitte|quit|suspends|suspend|casse|break|continue|isole|isolate|capture|erreur|error|reporte|defer)\\b"
+            "match": "\\b(if|unless|else|switch|select|case|default|while|until|do|loop|for|return|die|exit|yield|break|continue|try|catch|throw|defer)\\b"
         },
         "as": {
             "name": "keyword.control.grimoire",
-            "match": "\\b(en|as)\\b"
+            "match": "\\b(as)\\b"
         },
         "new": {
             "name": "keyword.other.new.grimoire",
-            "match": "\\b(crée|new)\\b"
+            "match": "\\b(new)\\b"
         },
         "operator": {
             "patterns": [
@@ -790,7 +793,7 @@
                 },
                 {
                     "name": "keyword.operator.word.grimoire",
-                    "match": "\\b(et|and|ou|or|pas|not|à|to|et_bin|bit_and|ou_bin|bit_or|non_bin|bit_not|xou_bin|bit_xor)\\b"
+                    "match": "\\b(and|or|not|to|bit_and|bit_or|bit_not|bit_xor)\\b"
                 }
             ]
         },
@@ -815,23 +818,23 @@
             ]
         },
         "function-call": {
-            "match": "[_[:alpha:]][_[:alnum:]]*[\\?|\\!]?(?=\\s*\\()",
+            "match": "[_[:alpha:]][_[:alnum:]]*[\\?]?(?=\\s*\\()",
             "captures": {
                 "0": {
                     "patterns": [
                         {
-                            "include": "#primitive"
+                            "include": "#support-function"
                         },
                         {
                             "name": "entity.name.function.grimoire",
-                            "match": "([_[:alpha:]][_[:alnum:]]*[\\?|\\!]?)"
+                            "match": "([_[:alpha:]][_[:alnum:]]*[\\?]?)"
                         }
                     ]
                 }
             }
         },
         "field": {
-            "match": "(\\.)\\s*([_[:alpha:]][_[:alnum:]]*[\\?|\\!]?)",
+            "match": "(\\.)\\s*([_[:alpha:]][_[:alnum:]]*[\\?]?)",
             "captures": {
                 "1": {
                     "name": "punctuation.accessor.grimoire"
@@ -842,7 +845,7 @@
             }
         },
         "method-call": {
-            "match": ":{1,2}\\s*([_[:alpha:]][_[:alnum:]]*[\\?|\\!]?)",
+            "match": ":{1,2}\\s*([_[:alpha:]][_[:alnum:]]*[\\?]?)",
             "captures": {
                 "0": {
                     "name": "punctuation.accessor.grimoire"
@@ -850,20 +853,20 @@
                 "1": {
                     "patterns": [
                         {
-                            "include": "#primitive"
+                            "include": "#support-function"
                         },
                         {
                             "name": "entity.name.function.grimoire",
-                            "match": "([_[:alpha:]][_[:alnum:]]*[\\?|\\!]?)"
+                            "match": "([_[:alpha:]][_[:alnum:]]*[\\?]?)"
                         }
                     ]
                 }
             }
         },
-        "use-string": {
+        "import-string": {
             "name": "variable.parameter.import.grimoire",
-            "begin": "\"|«",
-            "end": "\"|»",
+            "begin": "\"",
+            "end": "\"",
             "patterns": [
                 {
                     "name": "constant.character.escape.grimoire",
@@ -873,8 +876,8 @@
         },
         "string": {
             "name": "string.quoted.double.grimoire",
-            "begin": "\"|«",
-            "end": "\"|»",
+            "begin": "\"",
+            "end": "\"",
             "patterns": [
                 {
                     "name": "constant.character.escape.grimoire",
@@ -884,17 +887,17 @@
         },
         "identifier": {
             "name": "entity.name.grimoire",
-            "match": "[_[:alpha:]][_[:alnum:]]*[\\?|\\!]?"
+            "match": "[_[:alpha:]][_[:alnum:]]*[\\?]?"
         },
         "literal": {
             "patterns": [
                 {
                     "name": "variable.language.grimoire",
-                    "match": "\\b(soi|self)\\b"
+                    "match": "\\b(self)\\b"
                 },
                 {
                     "name": "constant.language.grimoire",
-                    "match": "\\b(vrai|true|faux|false|null|nul)\\b"
+                    "match": "\\b(true|false|null)\\b"
                 }
             ]
         },
@@ -950,6 +953,70 @@
         "semicolon": {
             "match": ";",
             "name": "punctuation.terminator.grimoire"
+        },
+        "support-constant": {
+            "patterns": [
+                {
+                    "name": "support.variable.grimoire",
+                    "match": "\\b(PI)\\b"
+                }
+            ]
+        },
+        "support-type": {
+            "patterns": [
+                {
+                    "name": "support.class.grimoire",
+                    "match": "\\b(ArrayIterator|StringIterator|RangeIterator)\\b"
+                },
+                {
+                    "name": "support.class.grimoire",
+                    "match": "\\b(HashMap|HashMapIterator)\\b"
+                },
+                {
+                    "name": "support.class.grimoire",
+                    "match": "\\b(pair|color|vec2|vec3|mat3|mat4|quat)\\b"
+                },
+                {
+                    "name": "support.class.grimoire",
+                    "match": "\\b(Entity|Light|Model|Quad)\\b"
+                }
+            ]
+        },
+        "support-function": {
+            "patterns": [
+                {
+                    "name": "support.function.grimoire",
+                    "match": "\\b(swap|cond|typeof|assert|range|unpack|print|each|next|copy)\\b"
+                },
+                {
+                    "name": "support.function.grimoire",
+                    "match": "\\b(time|wait|sleep|seconds|minutes|hours)\\b"
+                },
+                {
+                    "name": "support.function.grimoire",
+                    "match": "\\b(size|empty\\?|full\\?|fill|clear|unshift|push|shift|pop|first|last|remove|slice|reverse|insert|sort|findFirst|findLast|has\\?)\\b"
+                },
+                {
+                    "name": "support.function.grimoire",
+                    "match": "\\b(capacity)\\b"
+                },
+                {
+                    "name": "support.function.grimoire",
+                    "match": "\\b(set|get|keys|values)\\b"
+                },
+                {
+                    "name": "support.function.grimoire",
+                    "match": "\\b(min|max|clamp|rand|deg|rad|cos|sin|tan|acos|asin|atan|atan2|exp|log|log2|log10|sqrt|lerp|rlerp|abs|floor|ceil|round|truncate|positive\\?|negative\\?|zero\\?|invalid\\?|even\\?|odd\\?|approach)\\b"
+                },
+                {
+                    "name": "support.function.grimoire",
+                    "match": "\\b(vec2_zero|vec2_half|vec2_one|vec2_up|vec2_down|vec2_left|vec2_right|vec3_zero|vec3_half|vec3_one|vec3_up|vec3_down|vec3_left|vec3_right|sum|sign|reflect|refract|distance|distance2|dot|cross|normal|angle|rotate|rotated|vec2_angled|magnitude|magnitude2|normalize|normalized)\\b"
+                },
+                {
+                    "name": "support.function.grimoire",
+                    "match": "\\b(position|draw)\\b"
+                }
+            ]
         }
     },
     "scopeName": "source.grimoire"
