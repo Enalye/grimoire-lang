@@ -47,7 +47,7 @@
     ],
     "repository": {
         "function-decl": {
-            "begin": "\\b(function|fn|func|fun)\\b",
+            "begin": "\\b(function)\\b",
             "beginCaptures": {
                 "0": {
                     "name": "keyword.control.function.grimoire"
