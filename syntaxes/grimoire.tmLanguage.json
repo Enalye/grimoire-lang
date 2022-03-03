@@ -73,6 +73,9 @@
                     "include": "#template-variable-list"
                 },
                 {
+                    "include": "#where-list"
+                },
+                {
                     "include": "#block"
                 },
                 {
@@ -101,6 +104,9 @@
                 },
                 {
                     "include": "#template-variable-list"
+                },
+                {
+                    "include": "#where-list"
                 },
                 {
                     "include": "#block"
@@ -234,6 +240,38 @@
                 },
                 {
                     "include": "#comma"
+                }
+            ]
+        },
+        "where-list": {
+            "begin": "\\b(where)\\b",
+            "beginCaptures": {
+                "0": {
+                    "name": "keyword.control.where.grimoire"
+                }
+            },
+            "end": "(?={)",
+            "patterns": [
+                {
+                    "include": "#comment"
+                },
+                {
+                    "include": "#template-list"
+                },
+                {
+                    "match": "\\b(Register|Enum|Channel|Function|Task|Callable|Class|Foreign)\\b",
+                    "name": "storage.type.grimoire"
+                },
+                {
+                    "match": "[_[:alpha:]][_[:alnum:]]*[\\?]?",
+                    "name": "variable.parameter.grimoire"
+                },
+                {
+                    "include": "#comma"
+                },
+                {
+                    "match": ":",
+                    "name": "punctuation.colon.grimoire"
                 }
             ]
         },
