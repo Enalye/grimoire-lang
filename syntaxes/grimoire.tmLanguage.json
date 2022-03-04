@@ -259,8 +259,7 @@
                     "include": "#template-list"
                 },
                 {
-                    "match": "\\b(Register|Enum|Channel|Function|Task|Callable|Class|Foreign)\\b",
-                    "name": "storage.type.grimoire"
+                    "include": "#support-constraint"
                 },
                 {
                     "match": "[_[:alpha:]][_[:alnum:]]*[\\?]?",
@@ -991,6 +990,14 @@
         "semicolon": {
             "match": ";",
             "name": "punctuation.terminator.grimoire"
+        },
+        "support-constraint": {
+            "patterns": [
+                {
+                    "match": "\\b(Register|Enum|Channel|Function|Task|Callable|Class|Foreign|Numeric|NotNullable|Nullable|Is|Not|Base|Extends)\\b",
+                    "name": "storage.type.grimoire"
+                }
+            ]
         },
         "support-constant": {
             "patterns": [
