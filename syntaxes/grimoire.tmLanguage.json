@@ -59,6 +59,9 @@
                     "include": "#comment"
                 },
                 {
+                    "include": "#template-variable-list"
+                },
+                {
                     "include": "#operator"
                 },
                 {
@@ -68,9 +71,6 @@
                 {
                     "match": "\\b(as)\\b",
                     "name": "keyword.control.as.grimoire"
-                },
-                {
-                    "include": "#template-variable-list"
                 },
                 {
                     "include": "#where-list"
@@ -85,7 +85,7 @@
                     "include": "#parameter-list"
                 },
                 {
-                    "match": "[_[:alpha:]][_[:alnum:]]*[\\?]?",
+                    "match": "[_[:alpha:]][_[:alnum:]]*",
                     "name": "entity.name.function.grimoire"
                 }
             ]
@@ -118,7 +118,7 @@
                     "include": "#parameter-list"
                 },
                 {
-                    "match": "[_[:alpha:]][_[:alnum:]]*[\\?]?",
+                    "match": "[_[:alpha:]][_[:alnum:]]*",
                     "name": "entity.name.function.grimoire"
                 }
             ]
@@ -145,7 +145,7 @@
                     "include": "#parameter-list"
                 },
                 {
-                    "match": "[_[:alpha:]][_[:alnum:]]*[\\?]?",
+                    "match": "[_[:alpha:]][_[:alnum:]]*",
                     "name": "entity.name.function.grimoire"
                 }
             ]
@@ -172,7 +172,7 @@
                 },
                 {
                     "begin": "(?<=,|\\(\\s*)",
-                    "end": "[_[:alpha:]][_[:alnum:]]*[\\?]?",
+                    "end": "[_[:alpha:]][_[:alnum:]]*",
                     "endCaptures": {
                         "0": {
                             "name": "storage.type.grimoire"
@@ -181,7 +181,7 @@
                 },
                 {
                     "name": "variable.parameter.grimoire",
-                    "match": "[_[:alpha:]][_[:alnum:]]*[\\?]?"
+                    "match": "[_[:alpha:]][_[:alnum:]]*"
                 },
                 {
                     "include": "#comma"
@@ -207,7 +207,7 @@
                 },
                 {
                     "name": "variable.parameter.grimoire",
-                    "match": "[_[:alpha:]][_[:alnum:]]*[\\?]?"
+                    "match": "[_[:alpha:]][_[:alnum:]]*"
                 },
                 {
                     "include": "#comma"
@@ -236,7 +236,7 @@
                 },
                 {
                     "name": "storage.type.grimoire",
-                    "match": "[_[:alpha:]][_[:alnum:]]*[\\?]?"
+                    "match": "[_[:alpha:]][_[:alnum:]]*"
                 },
                 {
                     "include": "#comma"
@@ -262,7 +262,7 @@
                     "include": "#support-constraint"
                 },
                 {
-                    "match": "[_[:alpha:]][_[:alnum:]]*[\\?]?",
+                    "match": "[_[:alpha:]][_[:alnum:]]*",
                     "name": "variable.parameter.grimoire"
                 },
                 {
@@ -275,11 +275,19 @@
             ]
         },
         "global-keyword": {
-            "match": "\\b(public)\\b",
+            "match": "\\b(public|const|pure)\\b",
             "name": "storage.modifier.grimoire"
         },
         "type": {
             "patterns": [
+                {
+                    "match": "\\b(const|pure)\\b",
+                    "name": "storage.modifier.grimoire"
+                },
+                {
+                    "match": "\\?",
+                    "name": "keyword.operator.arithmetic.grimoire"
+                },
                 {
                     "match": "\\b(let|int|real|bool|string)\\b",
                     "name": "storage.type.grimoire"
@@ -509,7 +517,7 @@
                     "include": "#comment"
                 },
                 {
-                    "begin": "[_[:alpha:]][_[:alnum:]]*[\\?]?",
+                    "begin": "[_[:alpha:]][_[:alnum:]]*",
                     "beginCaptures": {
                         "0": {
                             "name": "entity.name.class.grimoire"
@@ -536,7 +544,7 @@
                                     "include": "#comment"
                                 },
                                 {
-                                    "match": "[_[:alpha:]][_[:alnum:]]*[\\?]?",
+                                    "match": "[_[:alpha:]][_[:alnum:]]*",
                                     "name": "entity.other.inherited-class.grimoire"
                                 },
                                 {
@@ -550,7 +558,7 @@
                     "include": "#template-variable-list"
                 },
                 {
-                    "match": "[_[:alpha:]][_[:alnum:]]*[\\?]?",
+                    "match": "[_[:alpha:]][_[:alnum:]]*",
                     "name": "entity.name.class.grimoire"
                 },
                 {
@@ -607,7 +615,7 @@
                     "include": "#comment"
                 },
                 {
-                    "match": "[_[:alpha:]][_[:alnum:]]*[\\?]?",
+                    "match": "[_[:alpha:]][_[:alnum:]]*",
                     "captures": {
                         "0": {
                             "name": "entity.name.class.grimoire"
@@ -632,7 +640,7 @@
                             "include": "#comment"
                         },
                         {
-                            "begin": "[_[:alpha:]][_[:alnum:]]*[\\?]?",
+                            "begin": "[_[:alpha:]][_[:alnum:]]*",
                             "beginCaptures": {
                                 "0": {
                                     "name": "entity.name.variable.enum-member.grimoire"
@@ -704,7 +712,7 @@
                     "include": "#operator"
                 },
                 {
-                    "match": "[_[:alpha:]][_[:alnum:]]*[\\?]?",
+                    "match": "[_[:alpha:]][_[:alnum:]]*",
                     "name": "entity.name.function.grimoire"
                 }
             ]
@@ -822,11 +830,11 @@
                 },
                 {
                     "name": "keyword.operator.assignement.grimoire",
-                    "match": "\\+=|-=|\\*=|\/=|%=|\\^=|~=|="
+                    "match": "\\+=|-=|\\*=|\/=|%=|\\^=|~=|\\?\\?=|="
                 },
                 {
                     "name": "keyword.operator.arithmetic.grimoire",
-                    "match": "\\+\\+|\\+|--|-|\\*|\/|%|\\^"
+                    "match": "\\+\\+|\\+|--|-|\\*|\/|%|\\^|\\?\\?|\\?"
                 },
                 {
                     "name": "keyword.operator.word.grimoire",
@@ -855,7 +863,7 @@
             ]
         },
         "function-call": {
-            "match": "[_[:alpha:]][_[:alnum:]]*[\\?]?(?=\\s*\\()",
+            "match": "[_[:alpha:]][_[:alnum:]]*(?=\\s*\\()",
             "captures": {
                 "0": {
                     "patterns": [
@@ -864,25 +872,28 @@
                         },
                         {
                             "name": "entity.name.function.grimoire",
-                            "match": "([_[:alpha:]][_[:alnum:]]*[\\?]?)"
+                            "match": "([_[:alpha:]][_[:alnum:]]*)"
                         }
                     ]
                 }
             }
         },
         "field": {
-            "match": "(\\.)\\s*([_[:alpha:]][_[:alnum:]]*[\\?]?)",
+            "match": "(\\.)\\s*(\\?)\\s*([_[:alpha:]][_[:alnum:]]*)",
             "captures": {
-                "1": {
+                "0": {
                     "name": "punctuation.accessor.grimoire"
                 },
                 "2": {
+                    "name": "punctuation.accessor.grimoire"
+                },
+                "4": {
                     "name": "variable.other.grimoire"
                 }
             }
         },
         "method-call": {
-            "match": ":{1,2}\\s*([_[:alpha:]][_[:alnum:]]*[\\?]?)",
+            "match": ":{1,2}\\s*([_[:alpha:]][_[:alnum:]]*)",
             "captures": {
                 "0": {
                     "name": "punctuation.accessor.grimoire"
@@ -894,7 +905,7 @@
                         },
                         {
                             "name": "entity.name.function.grimoire",
-                            "match": "([_[:alpha:]][_[:alnum:]]*[\\?]?)"
+                            "match": "([_[:alpha:]][_[:alnum:]]*)"
                         }
                     ]
                 }
@@ -924,7 +935,7 @@
         },
         "identifier": {
             "name": "entity.name.grimoire",
-            "match": "[_[:alpha:]][_[:alnum:]]*[\\?]?"
+            "match": "[_[:alpha:]][_[:alnum:]]*"
         },
         "literal": {
             "patterns": [
@@ -1015,15 +1026,19 @@
                 },
                 {
                     "name": "support.class.grimoire",
-                    "match": "\\b(HashMap|HashMapIterator)\\b"
+                    "match": "\\b(HashMap|HashMapIterator|Queue|QueueIterator)\\b"
                 },
                 {
                     "name": "support.class.grimoire",
-                    "match": "\\b(pair|color|vec2|vec3|mat3|mat4|quat)\\b"
+                    "match": "\\b(dynamic|pair|color|vec2|vec3|mat3|mat4|quat)\\b"
                 },
                 {
                     "name": "support.class.grimoire",
                     "match": "\\b(Entity|Light|Model|Quad)\\b"
+                },
+                {
+                    "name": "support.class.grimoire",
+                    "match": "\\b(UIElement|Label|VContainer|HContainer)\\b"
                 }
             ]
         },
@@ -1031,7 +1046,7 @@
             "patterns": [
                 {
                     "name": "support.function.grimoire",
-                    "match": "\\b(swap|cond|typeof|assert|range|unpack|print|each|next|copy)\\b"
+                    "match": "\\b(swap|cond|some|expect|unwrap|unwrapOr|typeOf|assert|range|unpack|print|each|next|copy)\\b"
                 },
                 {
                     "name": "support.function.grimoire",
@@ -1039,7 +1054,7 @@
                 },
                 {
                     "name": "support.function.grimoire",
-                    "match": "\\b(size|empty\\?|full\\?|fill|clear|unshift|push|shift|pop|first|last|remove|slice|reverse|insert|sort|findFirst|findLast|has\\?)\\b"
+                    "match": "\\b(size|isEmpty|isFull|fill|clear|unshift|push|shift|pop|first|last|remove|slice|reverse|insert|sort|indexOf|lastIndexOf|contains)\\b"
                 },
                 {
                     "name": "support.function.grimoire",
@@ -1051,7 +1066,7 @@
                 },
                 {
                     "name": "support.function.grimoire",
-                    "match": "\\b(min|max|clamp|rand|deg|rad|cos|sin|tan|acos|asin|atan|atan2|exp|log|log2|log10|sqrt|lerp|rlerp|abs|floor|ceil|round|truncate|positive\\?|negative\\?|zero\\?|invalid\\?|even\\?|odd\\?|approach)\\b"
+                    "match": "\\b(min|max|clamp|rand|deg|rad|cos|sin|tan|acos|asin|atan|atan2|exp|log|log2|log10|sqrt|lerp|rlerp|abs|floor|ceil|round|truncate|isNaN|approach)\\b"
                 },
                 {
                     "name": "support.function.grimoire",
