@@ -116,9 +116,6 @@
                     "include": "#template-variable-list"
                 },
                 {
-                    "include": "#operator"
-                },
-                {
                     "begin": "\\b(operator)\\b",
                     "beginCaptures": {
                         "0": {
@@ -858,6 +855,9 @@
                     "include": "#variable-decl"
                 },
                 {
+                    "include": "#function-ref"
+                },
+                {
                     "include": "#operator"
                 },
                 {
@@ -890,6 +890,9 @@
                 },
                 {
                     "include": "#block"
+                },
+                {
+                    "include": "#function-ref"
                 },
                 {
                     "include": "#operator"
@@ -951,23 +954,55 @@
                 }
             ]
         },
+        "function-ref": {
+            "patterns": [
+                {
+                    "begin": "(\\&)\\s*(\\<)",
+                    "beginCaptures": {
+                        "1": {
+                            "name": "keyword.operator.reference.grimoire"
+                        },
+                        "2": {
+                            "name": "punctuation.bracket.angle.open.grimoire"
+                        }
+                    },
+                    "end": "(\\>)\\s*([_[:alpha:]][_[:alnum:]]*)?",
+                    "endCaptures": {
+                        "1": {
+                            "name": "punctuation.bracket.angle.close.grimoire"
+                        },
+                        "2": {
+                            "name": "entity.name.function.grimoire"
+                        }
+                    },
+                    "patterns": [
+                        {
+                            "include": "#comment"
+                        },
+                        {
+                            "include": "#type"
+                        }
+                    ]
+                }
+            ]
+        },
         "operator": {
             "patterns": [
                 {
                     "name": "keyword.operator.arithmetic.grimoire",
-                    "match": "<<|>>|=>|->|<-"
+                    "match": "\\<\\<|\\>\\>|\\=\\>|\\-\\>|\\<\\-"
                 },
                 {
                     "name": "keyword.operator.logical.grimoire",
-                    "match": "<=>|===|==|!=|\\>=|\\<=|\\>|\\<"
+                    "match": "\\<\\=\\>|\\={2,3}|\\!\\=|\\>\\=|\\<\\=|\\>|\\<"
                 },
                 {
                     "name": "keyword.operator.assignement.grimoire",
-                    "match": "\\+=|-=|\\*=|\/=|%=|\\^=|~=|\\?\\?=|="
+                    "match": "\\&{1,2}\\=|\\|{1,2}\\=|\\+\\=|-\\=|\\*{1,2}\\=|\/\\=|%\\=|\\^\\=|\\~\\=|\\?\\?\\=|="
                 },
                 {
                     "name": "keyword.operator.arithmetic.grimoire",
-                    "match": "\\+\\+|\\+|--|-|\\*|\/|%|\\^|\\?\\?|\\?"
+                    "match": "\\&{1,2}|\\|{1,2}|\\+{1,2}|\\+|\\-{1,2}|\\*{1,2}|\/|%|\\^|\\?{1,2}"
                 },
                 {
                     "name": "keyword.operator.word.grimoire",
