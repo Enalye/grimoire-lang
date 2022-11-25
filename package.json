@@ -11,16 +11,31 @@
         "Programming Languages"
     ],
     "contributes": {
-        "languages": [{
-            "id": "grimoire",
-            "aliases": ["Grimoire", "grimoire"],
-            "extensions": [".grimoire",".gs",".g",".gr",".grm"],
-            "configuration": "./language-configuration.json"
-        }],
-        "grammars": [{
-            "language": "grimoire",
-            "scopeName": "source.grimoire",
-            "path": "./syntaxes/grimoire.tmLanguage.json"
-        }]
+        "languages": [
+            {
+                "id": "grimoire",
+                "aliases": [
+                    "Grimoire",
+                    "grimoire"
+                ],
+                "extensions": [
+                    ".gr",
+                    ".grm",
+                    ".grimoire"
+                ],
+                "configuration": "./language-configuration.json",
+                "icon": {
+                    "light": "./icons/clair.png",
+                    "dark": "./icons/sombre.png"
+                }
+            }
+        ],
+        "grammars": [
+            {
+                "language": "grimoire",
+                "scopeName": "source.grimoire",
+                "path": "./syntaxes/grimoire.tmLanguage.json"
+            }
+        ]
     }
 }

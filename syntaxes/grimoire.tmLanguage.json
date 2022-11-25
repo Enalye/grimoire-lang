@@ -51,7 +51,7 @@
                     "name": "keyword.control.var.grimoire"
                 }
             },
-            "end": "(?<=;)",
+            "end": "(?<=\\;)",
             "endCaptures": {
                 "0": {
                     "name": "punctuation.terminator.grimoire"
@@ -104,7 +104,7 @@
                     "name": "keyword.control.function.grimoire"
                 }
             },
-            "end": "(?<=})",
+            "end": "(?<=\\}|\\;)",
             "patterns": [
                 {
                     "include": "#comment"
@@ -161,6 +161,15 @@
                             "name": "entity.name.function.grimoire"
                         }
                     }
+                },
+                {
+                    "begin": "(?<=\\))",
+                    "end": "(?<=\\;)",
+                    "patterns": [
+                        {
+                            "include": "#expression"
+                        }
+                    ]
                 }
             ]
         },
@@ -171,7 +180,7 @@
                     "name": "keyword.control.function.grimoire"
                 }
             },
-            "end": "(?<=})",
+            "end": "(?<=\\}|\\;)",
             "patterns": [
                 {
                     "include": "#comment"
@@ -189,8 +198,21 @@
                     "include": "#parameter-list"
                 },
                 {
-                    "match": "[_[:alpha:]][_[:alnum:]]*",
-                    "name": "entity.name.function.grimoire"
+                    "match": "(?<=\\b(task)\\b|\\>)\\s*([_[:alpha:]][_[:alnum:]]*)\\s*(?=\\()",
+                    "captures": {
+                        "2": {
+                            "name": "entity.name.function.grimoire"
+                        }
+                    }
+                },
+                {
+                    "begin": "(?<=\\))",
+                    "end": "(?<=\\;)",
+                    "patterns": [
+                        {
+                            "include": "#expression"
+                        }
+                    ]
                 }
             ]
         },
@@ -201,7 +223,7 @@
                     "name": "keyword.control.function.grimoire"
                 }
             },
-            "end": "(?<=})",
+            "end": "(?<=\\}|\\;)",
             "patterns": [
                 {
                     "include": "#comment"
@@ -213,8 +235,21 @@
                     "include": "#parameter-list"
                 },
                 {
-                    "match": "[_[:alpha:]][_[:alnum:]]*",
-                    "name": "entity.name.function.grimoire"
+                    "match": "(?<=\\b(event)\\b)\\s*([_[:alpha:]][_[:alnum:]]*)\\s*(?=\\()",
+                    "captures": {
+                        "2": {
+                            "name": "entity.name.function.grimoire"
+                        }
+                    }
+                },
+                {
+                    "begin": "(?<=\\))",
+                    "end": "(?<=\\;)",
+                    "patterns": [
+                        {
+                            "include": "#expression"
+                        }
+                    ]
                 }
             ]
         },
@@ -1158,6 +1193,84 @@
                     "include": "#string"
                 },
                 {
+                    "begin": "\\b(list)\\b",
+                    "beginCaptures": {
+                        "0": {
+                            "name": "storage.type.grimoire"
+                        }
+                    },
+                    "end": "(?<=\\>)",
+                    "patterns": [
+                        {
+                            "include": "#comment"
+                        },
+                        {
+                            "begin": "\\<",
+                            "beginCaptures": {
+                                "0": {
+                                    "name": "punctuation.bracket.open.grimoire"
+                                }
+                            },
+                            "end": "\\>",
+                            "endCaptures": {
+                                "0": {
+                                    "name": "punctuation.bracket.close.grimoire"
+                                }
+                            },
+                            "patterns": [
+                                {
+                                    "include": "#comment"
+                                },
+                                {
+                                    "include": "#type"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "begin": "\\b(channel)\\b",
+                    "beginCaptures": {
+                        "0": {
+                            "name": "storage.type.grimoire"
+                        }
+                    },
+                    "end": "(?<=\\>)",
+                    "patterns": [
+                        {
+                            "include": "#comment"
+                        },
+                        {
+                            "begin": "\\<",
+                            "beginCaptures": {
+                                "0": {
+                                    "name": "punctuation.bracket.angle.open.grimoire"
+                                }
+                            },
+                            "end": "\\>",
+                            "endCaptures": {
+                                "0": {
+                                    "name": "punctuation.bracket.angle.close.grimoire"
+                                }
+                            },
+                            "patterns": [
+                                {
+                                    "include": "#comment"
+                                },
+                                {
+                                    "include": "#type"
+                                },
+                                {
+                                    "include": "#comma"
+                                },
+                                {
+                                    "include": "#numeric"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
                     "name": "variable.language.grimoire",
                     "match": "\\b(self)\\b"
                 },
@@ -1199,13 +1312,16 @@
                     "name": "keyword.control.function.grimoire"
                 }
             },
-            "end": "(?<=})",
+            "end": "(?<=}|;)",
             "patterns": [
                 {
                     "include": "#comment"
                 },
                 {
                     "include": "#block"
+                },
+                {
+                    "include": "#expression"
                 },
                 {
                     "include": "#anonymous-parameter-list"
