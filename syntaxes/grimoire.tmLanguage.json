@@ -163,13 +163,7 @@
                     }
                 },
                 {
-                    "begin": "(?<=\\))",
-                    "end": "(?<=\\;)",
-                    "patterns": [
-                        {
-                            "include": "#expression"
-                        }
-                    ]
+                    "include": "#expression"
                 }
             ]
         },
@@ -206,13 +200,7 @@
                     }
                 },
                 {
-                    "begin": "(?<=\\))",
-                    "end": "(?<=\\;)",
-                    "patterns": [
-                        {
-                            "include": "#expression"
-                        }
-                    ]
+                    "include": "#expression"
                 }
             ]
         },
@@ -243,13 +231,7 @@
                     }
                 },
                 {
-                    "begin": "(?<=\\))",
-                    "end": "(?<=\\;)",
-                    "patterns": [
-                        {
-                            "include": "#expression"
-                        }
-                    ]
+                    "include": "#expression"
                 }
             ]
         },
