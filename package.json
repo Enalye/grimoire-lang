@@ -2,8 +2,13 @@
     "name": "grimoire-lang",
     "displayName": "Grimoire Language",
     "description": "Language support for the Grimoire language",
-    "version": "0.5.2",
+    "version": "0.7.0",
     "publisher": "Enalye",
+	"icon": "logo.png",
+    "repository": {
+		"type": "git",
+		"url": "https://github.com/enalye/grimoire-lang"
+    },
     "engines": {
         "vscode": "^1.25.0"
     },
