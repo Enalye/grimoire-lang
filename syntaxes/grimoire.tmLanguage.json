@@ -477,7 +477,7 @@
                     "name": "keyword.operator.arithmetic.grimoire"
                 },
                 {
-                    "match": "\\b(int|uint|byte|float|bool|char|string)\\b",
+                    "match": "\\b(int|uint|byte|float|double|bool|char|string)\\b",
                     "name": "storage.type.grimoire"
                 },
                 {
@@ -1426,15 +1426,15 @@
                 },
                 {
                     "name": "constant.numeric.float.grimoire",
-                    "match": "([0-9]+[0-9_]*)(\\.[0-9]+)[fF]?"
+                    "match": "([0-9]+[0-9_]*)(\\.[0-9]+)[fFdD]?"
                 },
                 {
                     "name": "constant.numeric.float.grimoire",
-                    "match": "([0-9][0-9_]*)[fF]"
+                    "match": "([0-9][0-9_]*)[fFdD]"
                 },
                 {
                     "name": "constant.numeric.float.grimoire",
-                    "match": "\\.([0-9][0-9_]*)[fF]?"
+                    "match": "\\.([0-9][0-9_]*)[fFdD]?"
                 },
                 {
                     "name": "constant.numeric.integer.grimoire",

@@ -2,7 +2,7 @@
     "name": "grimoire-lang",
     "displayName": "Grimoire Language",
     "description": "Language support for the Grimoire language",
-    "version": "0.8.1",
+    "version": "0.8.2",
     "publisher": "Enalye",
 	"icon": "logo.png",
     "repository": {
